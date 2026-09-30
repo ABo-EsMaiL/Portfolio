@@ -38,6 +38,8 @@ const reports = [];
 try {
   await cdp('Runtime.enable');
   await cdp('Page.enable');
+  await cdp('Page.navigate', { url: new URL('docs/architecture-roadmap.html', root).href });
+  await evaluate("new Promise(resolve => document.readyState === 'complete' ? resolve() : window.addEventListener('load', () => resolve(), { once: true }))");
   for (const width of [1440, 390, 320]) {
     const height = width > 800 ? 1050 : 844;
     await cdp('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: false });
@@ -53,7 +55,7 @@ try {
         svgCount: document.querySelectorAll('svg').length, outOfSvgBounds: outside,
         scrollRegions: [...document.querySelectorAll('.canvas')].map(e=>({width:e.clientWidth, contentWidth:e.scrollWidth, keyboardFocusable:e.tabIndex===0})),
         externalResources: performance.getEntriesByType('resource').filter(e=>/^https?:/.test(e.name)).map(e=>e.name),
-        scriptCount: document.scripts.length, invalidLinks: [...document.querySelectorAll('a')].filter(e=>!e.getAttribute('href')).length };
+        scriptCount: document.scripts.length, hasSafeAssetRoute: !!document.querySelector('path[d="M195 350 V385 H15 V605 H510 V670"]'), invalidLinks: [...document.querySelectorAll('a')].filter(e=>!e.getAttribute('href')).length };
     })()`);
     assert(report.documentWidth <= report.clientWidth + 1, `Horizontal page overflow: ${width}`);
     assert.equal(report.headingCount, 1);
@@ -62,6 +64,7 @@ try {
     assert.deepEqual(report.outOfSvgBounds, []);
     assert.deepEqual(report.externalResources, []);
     assert.equal(report.scriptCount, 0);
+    assert(report.hasSafeAssetRoute, 'Reloaded diagram must use the corrected asset connector route');
     assert.equal(report.invalidLinks, 0);
     assert(report.scrollRegions.every(r => r.keyboardFocusable));
     const shot = await cdp('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });

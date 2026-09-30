@@ -27,6 +27,7 @@
       ],
       "externalResources": [],
       "scriptCount": 0,
+      "hasSafeAssetRoute": true,
       "invalidLinks": 0
     },
     {
@@ -52,6 +53,7 @@
       ],
       "externalResources": [],
       "scriptCount": 0,
+      "hasSafeAssetRoute": true,
       "invalidLinks": 0
     },
     {
@@ -77,6 +79,7 @@
       ],
       "externalResources": [],
       "scriptCount": 0,
+      "hasSafeAssetRoute": true,
       "invalidLinks": 0
     }
   ]

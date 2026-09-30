@@ -176,7 +176,7 @@ def main():
     spec = (FEATURE / 'spec.md').read_text(encoding='utf-8')
     ids = re.findall(r'^- \*\*FR-(\d{3}):\*\*', spec, re.M)
     assert ids == [f'{i:03d}' for i in range(1, 25)]
-    authored = [*FEATURE.glob('*.md'), ROOT / 'DESIGN.md', ROOT / '.specify/memory/constitution.md', * (ROOT / 'tasks').glob('*.md'), ROOT / 'docs/phase-2-review.md']
+    authored = [*FEATURE.glob('*.md'), ROOT / 'DESIGN.md', ROOT / '.specify/memory/constitution.md', * (ROOT / 'tasks').glob('*.md'), ROOT / 'docs/phase-2-review.md', ROOT / 'README.md']
     link_count = 0
     for path in authored:
         text = path.read_text(encoding='utf-8')

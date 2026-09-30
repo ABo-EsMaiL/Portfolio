@@ -58,7 +58,7 @@ Start with these logical responsibilities; do not create empty files or componen
 Current, runnable now from project root:
 ```bash
 .tools/spec-kit-venv/Scripts/specify.exe version
-bash .specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks
+SPECIFY_FEATURE=001-cinematic-identity bash .specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks
 .tools/spec-kit-venv/Scripts/python.exe scripts/check_specs.py
 .tools/designmd/node_modules/.bin/designmd lint DESIGN.md
 git -c safe.directory=D:/AI_Engineer/Portfolio diff --check

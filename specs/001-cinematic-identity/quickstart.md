@@ -1,9 +1,11 @@
 # Quickstart — Review and Validate Phase 2
 
 From `D:/AI_Engineer/Portfolio` in Git Bash:
+
+The feature selector is explicit because Spec Kit's local active-feature state is intentionally Git-ignored. This command therefore selects the same tracked spec even after a fresh checkout.
 ```bash
 .tools/spec-kit-venv/Scripts/specify.exe version
-bash .specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks
+SPECIFY_FEATURE=001-cinematic-identity bash .specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks
 .tools/spec-kit-venv/Scripts/python.exe scripts/check_specs.py
 .tools/designmd/node_modules/.bin/designmd lint DESIGN.md
 git -c safe.directory=D:/AI_Engineer/Portfolio status --short --branch
