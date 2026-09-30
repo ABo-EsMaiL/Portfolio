@@ -1,0 +1,22 @@
+# Project-local tooling and caches
+/.tools/
+/.venv/
+/tmp/
+# Application outputs (application not initialized yet)
+/node_modules/
+/.next/
+/out/
+/dist/
+/coverage/
+/test-results/
+/playwright-report/
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+# Host/editor artifacts
+.DS_Store
+Thumbs.db
+*.log
