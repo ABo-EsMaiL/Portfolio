@@ -1,0 +1,83 @@
+{
+  "status": "PASS",
+  "browser": "Edg/154.0.4258.37",
+  "kind": "Rendered documentation only — not Hero/application/performance verification",
+  "exceptions": [],
+  "viewports": [
+    {
+      "width": 1440,
+      "title": "Portfolio — Architecture & Visual Roadmap",
+      "documentWidth": 1425,
+      "clientWidth": 1425,
+      "headingCount": 1,
+      "hasSections": true,
+      "svgCount": 6,
+      "outOfSvgBounds": [],
+      "scrollRegions": [
+        {
+          "width": 1254,
+          "contentWidth": 1254,
+          "keyboardFocusable": true
+        },
+        {
+          "width": 1254,
+          "contentWidth": 1254,
+          "keyboardFocusable": true
+        }
+      ],
+      "externalResources": [],
+      "scriptCount": 0,
+      "invalidLinks": 0
+    },
+    {
+      "width": 390,
+      "title": "Portfolio — Architecture & Visual Roadmap",
+      "documentWidth": 375,
+      "clientWidth": 375,
+      "headingCount": 1,
+      "hasSections": true,
+      "svgCount": 6,
+      "outOfSvgBounds": [],
+      "scrollRegions": [
+        {
+          "width": 337,
+          "contentWidth": 950,
+          "keyboardFocusable": true
+        },
+        {
+          "width": 337,
+          "contentWidth": 950,
+          "keyboardFocusable": true
+        }
+      ],
+      "externalResources": [],
+      "scriptCount": 0,
+      "invalidLinks": 0
+    },
+    {
+      "width": 320,
+      "title": "Portfolio — Architecture & Visual Roadmap",
+      "documentWidth": 305,
+      "clientWidth": 305,
+      "headingCount": 1,
+      "hasSections": true,
+      "svgCount": 6,
+      "outOfSvgBounds": [],
+      "scrollRegions": [
+        {
+          "width": 267,
+          "contentWidth": 950,
+          "keyboardFocusable": true
+        },
+        {
+          "width": 267,
+          "contentWidth": 950,
+          "keyboardFocusable": true
+        }
+      ],
+      "externalResources": [],
+      "scriptCount": 0,
+      "invalidLinks": 0
+    }
+  ]
+}
