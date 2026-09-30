@@ -1,0 +1,13 @@
+# Stable text files; preserve original source assets byte-for-byte.
+* text=auto eol=lf
+*.md text eol=lf
+*.sh text eol=lf
+*.py text eol=lf
+*.mjs text eol=lf
+*.json text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.pdf -text
+*.jpeg -text
+*.png -text
+chatgpt-chat-2026-09-20.md -text whitespace=cr-at-eol
