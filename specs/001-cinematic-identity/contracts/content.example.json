@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "defaultLocale": "en",
+  "locales": [
+    {
+      "id": "en",
+      "direction": "ltr"
+    }
+  ],
+  "profile": {
+    "id": "ahmed-esmail",
+    "fullName": "Ahmed AbdElHady Mohamed Esmail",
+    "displayName": "Ahmed Esmail",
+    "role": {
+      "en": "AI & Machine Learning Engineer"
+    },
+    "location": {
+      "en": "Cairo, Egypt"
+    }
+  },
+  "hero": {
+    "heading": {
+      "en": "Ahmed Esmail"
+    },
+    "subtitle": {
+      "en": "AI & Machine Learning Engineer"
+    },
+    "question": {
+      "en": "Who is he?"
+    },
+    "cta": {
+      "en": "Find out"
+    },
+    "hint": {
+      "en": "Scroll to explore"
+    }
+  },
+  "about": {
+    "heading": {
+      "en": "The engineer behind the systems"
+    },
+    "bio": {
+      "en": "I build end-to-end AI pipelines across computer vision, natural language processing and generative AI—from model development to APIs and containerized deployment."
+    },
+    "capabilityStatements": [
+      {
+        "en": "Computer vision and deep learning models."
+      },
+      {
+        "en": "Local retrieval-augmented generation and stateful AI agents."
+      },
+      {
+        "en": "Validated APIs, model optimization and containerized deployment."
+      }
+    ]
+  },
+  "portrait": {
+    "id": "portrait",
+    "source": "Picsart_26-07-31_23-36-42-453.jpg.jpeg",
+    "width": 3072,
+    "height": 4096,
+    "sha256": "b7d08c04b6759e21e6f58df44069329584ed4c826891066f7473fe800add15e4",
+    "alt": {
+      "en": "Portrait of Ahmed Esmail"
+    },
+    "cutout": null,
+    "heroCrop": null,
+    "aboutCrop": null,
+    "faceBox": null
+  },
+  "socials": [
+    {
+      "id": "linkedin",
+      "kind": "linkedin",
+      "label": {
+        "en": "LinkedIn"
+      },
+      "url": "https://linkedin.com/in/ahmed-abdelhady-esmail"
+    },
+    {
+      "id": "github",
+      "kind": "github",
+      "label": {
+        "en": "GitHub"
+      },
+      "url": "https://github.com/ABo-EsMail"
+    },
+    {
+      "id": "email",
+      "kind": "email",
+      "label": {
+        "en": "Email"
+      },
+      "url": "mailto:ahmedaboesmail16@gmail.com"
+    }
+  ]
+}

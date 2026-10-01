@@ -1,0 +1,543 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ahmed-esmail:portfolio:content:v1",
+  "title": "Hero/About editorial content v1 (draft)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "defaultLocale",
+    "locales",
+    "profile",
+    "hero",
+    "about",
+    "portrait",
+    "socials"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "defaultLocale": {
+      "enum": [
+        "en",
+        "ar"
+      ]
+    },
+    "locales": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "direction"
+        ],
+        "properties": {
+          "id": {
+            "enum": [
+              "en",
+              "ar"
+            ]
+          },
+          "direction": {
+            "enum": [
+              "ltr",
+              "rtl"
+            ]
+          }
+        }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "fullName",
+        "displayName",
+        "role",
+        "location"
+      ],
+      "properties": {
+        "id": {
+          "const": "ahmed-esmail"
+        },
+        "fullName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "displayName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "role": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "en"
+          ],
+          "properties": {
+            "en": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100,
+              "pattern": "^[^<>\\x00-\\x1f]*$"
+            },
+            "ar": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100,
+              "pattern": "^[^<>\\x00-\\x1f]*$"
+            }
+          }
+        },
+        "location": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "en"
+          ],
+          "properties": {
+            "en": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100,
+              "pattern": "^[^<>\\x00-\\x1f]*$"
+            },
+            "ar": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100,
+              "pattern": "^[^<>\\x00-\\x1f]*$"
+            }
+          }
+        }
+      }
+    },
+    "hero": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "heading",
+        "subtitle",
+        "question",
+        "cta",
+        "hint"
+      ],
+      "properties": {
+        "heading": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "en"
+          ],
+          "properties": {
+            "en": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120,
+              "pattern": "^[^<>\\x00-\\x1f]*$"
+            },
+            "ar": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120,
+              "pattern": "^[^<>\\x00-\\x1f]*$"
+            }
+          }
+        },
+        "subtitle": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "en"
+          ],
+          "properties": {
+            "en": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240,
+              "pattern": "^[^<>\\x00-\\x1f]*$"
+            },
+            "ar": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240,
+              "pattern": "^[^<>\\x00-\\x1f]*$"
+            }
+          }
+        },
+        "question": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "en"
+          ],
+          "properties": {
+            "en": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80,
+              "pattern": "^[^<>\\x00-\\x1f]*$"
+            },
+            "ar": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80,
+              "pattern": "^[^<>\\x00-\\x1f]*$"
+            }
+          }
+        },
+        "cta": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "en"
+          ],
+          "properties": {
+            "en": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 40,
+              "pattern": "^[^<>\\x00-\\x1f]*$"
+            },
+            "ar": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 40,
+              "pattern": "^[^<>\\x00-\\x1f]*$"
+            }
+          }
+        },
+        "hint": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "en"
+          ],
+          "properties": {
+            "en": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80,
+              "pattern": "^[^<>\\x00-\\x1f]*$"
+            },
+            "ar": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80,
+              "pattern": "^[^<>\\x00-\\x1f]*$"
+            }
+          }
+        }
+      }
+    },
+    "about": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "heading",
+        "bio",
+        "capabilityStatements"
+      ],
+      "properties": {
+        "heading": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "en"
+          ],
+          "properties": {
+            "en": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120,
+              "pattern": "^[^<>\\x00-\\x1f]*$"
+            },
+            "ar": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120,
+              "pattern": "^[^<>\\x00-\\x1f]*$"
+            }
+          }
+        },
+        "bio": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "en"
+          ],
+          "properties": {
+            "en": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1200,
+              "pattern": "^[^<>\\x00-\\x1f]*$"
+            },
+            "ar": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1200,
+              "pattern": "^[^<>\\x00-\\x1f]*$"
+            }
+          }
+        },
+        "capabilityStatements": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "en"
+            ],
+            "properties": {
+              "en": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 180,
+                "pattern": "^[^<>\\x00-\\x1f]*$"
+              },
+              "ar": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 180,
+                "pattern": "^[^<>\\x00-\\x1f]*$"
+              }
+            }
+          }
+        }
+      }
+    },
+    "portrait": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "source",
+        "width",
+        "height",
+        "sha256",
+        "alt",
+        "cutout",
+        "heroCrop",
+        "aboutCrop",
+        "faceBox"
+      ],
+      "properties": {
+        "id": {
+          "const": "portrait"
+        },
+        "source": {
+          "const": "Picsart_26-07-31_23-36-42-453.jpg.jpeg"
+        },
+        "width": {
+          "const": 3072
+        },
+        "height": {
+          "const": 4096
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "alt": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "en"
+          ],
+          "properties": {
+            "en": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^[^<>\\x00-\\x1f]*$"
+            },
+            "ar": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^[^<>\\x00-\\x1f]*$"
+            }
+          }
+        },
+        "cutout": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^assets/[A-Za-z0-9/_-]+\\.(webp|avif|png)$",
+          "maxLength": 180
+        },
+        "heroCrop": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "required": [
+            "x",
+            "y",
+            "width",
+            "height"
+          ],
+          "properties": {
+            "x": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "y": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "width": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 1
+            },
+            "height": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 1
+            }
+          }
+        },
+        "aboutCrop": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "required": [
+            "x",
+            "y",
+            "width",
+            "height"
+          ],
+          "properties": {
+            "x": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "y": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "width": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 1
+            },
+            "height": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 1
+            }
+          }
+        },
+        "faceBox": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "required": [
+            "x",
+            "y",
+            "width",
+            "height"
+          ],
+          "properties": {
+            "x": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "y": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "width": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 1
+            },
+            "height": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 1
+            }
+          }
+        }
+      }
+    },
+    "socials": {
+      "type": "array",
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "kind",
+          "label",
+          "url"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]{0,39}$"
+          },
+          "kind": {
+            "enum": [
+              "github",
+              "linkedin",
+              "email",
+              "other"
+            ]
+          },
+          "label": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "en"
+            ],
+            "properties": {
+              "en": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 80,
+                "pattern": "^[^<>\\x00-\\x1f]*$"
+              },
+              "ar": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 80,
+                "pattern": "^[^<>\\x00-\\x1f]*$"
+              }
+            }
+          },
+          "url": {
+            "type": "string",
+            "maxLength": 300,
+            "pattern": "^(https://[^\\s]+|mailto:[A-Za-z0-9._+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,})$"
+          }
+        }
+      }
+    }
+  }
+}

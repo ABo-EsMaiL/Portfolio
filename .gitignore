@@ -2,6 +2,8 @@
 /.tools/
 /.venv/
 /tmp/
+__pycache__/
+*.py[cod]
 # Application outputs (application not initialized yet)
 /node_modules/
 /.next/

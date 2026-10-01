@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "positiveContractCases": 4,
+  "negativeCasesRejected": 20,
+  "functionalRequirements": 24,
+  "sourceHashesUnchanged": 3,
+  "localLinksVerified": 30,
+  "diagramViewports": [
+    1440,
+    390,
+    320
+  ],
+  "applicationCodeCreated": false,
+  "currentBranch": "feature/spec-kit-setup",
+  "mainBaselineUnmerged": "4b47e76",
+  "cacheBoundaryIncidentDisclosed": true
+}
