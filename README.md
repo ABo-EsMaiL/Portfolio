@@ -4,7 +4,7 @@ A custom, camera-led portfolio: one persistent world, reversible transformations
 
 ## Current status
 
-Phase 1 source analysis is complete. Phase 2 is authorized: local Git + official GitHub Spec Kit + formal specifications. Application implementation is **not authorized until specification sign-off**.
+Milestone 1 is explicitly approved and merged into main at `e22ea4a` (local tag `milestone-1`). Milestone 2 is authorized on `feature/hero-section`; the minimal shell is runnable, and portrait/Hero implementation is in progress. No Hero merge or Milestone 3 implementation is authorized yet.
 
 - Stack: Next.js App Router + TypeScript + Tailwind CSS; GSAP + ScrollTrigger.
 - Detection: visual illusion, not client-side machine learning inference.
@@ -30,6 +30,6 @@ Start with [Phase 2 review](docs/phase-2-review.md) and the offline [architectur
 - [Implementation plan](specs/001-cinematic-identity/plan.md) and [milestone roadmap](tasks/plan.md)
 - [Runnable checks](specs/001-cinematic-identity/quickstart.md) and [tooling provenance/boundary disclosure](docs/tooling.md)
 
-The package is draft for owner sign-off; only the initial baseline is on main. No merge is authorized yet.
+The specification package is owner-approved. See [recorded approval](docs/milestone-1-approval.md). The Phase 2 review remains historical evidence of the pre-implementation checks.
 
-No production application, CMS, remote repository or deployment exists yet.
+Run `npm run dev` locally. Production verification uses `npm run build` then `npm run start`. Checks: `npm run test:unit`, `npm run typecheck`, `npm run lint`, `.tools/spec-kit-venv/Scripts/python.exe scripts/check_specs.py --hero`; start the local server before `npm run test:e2e`. npm cache is project-local; browser tests use installed Edge. No CMS, remote repository or deployment exists.

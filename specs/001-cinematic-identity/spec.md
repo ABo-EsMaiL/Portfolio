@@ -4,7 +4,7 @@
 **Working branch:** `feature/spec-kit-setup`
 **Implementation branches:** `feature/hero-section`, then `feature/hero-about-transition`
 **Created:** 2026-10-01
-**Status:** Draft for owner sign-off — no application implementation authorized
+**Status:** Owner-approved Milestone 1; Hero implementation authorized on `feature/hero-section`. See `docs/milestone-1-approval.md`. Hero → About implementation remains Milestone 3.
 **Input:** Complete North Star + CV + owner Phase 2 refinements in `docs/phase-2-decisions.md`.
 
 ## Objective and Scope

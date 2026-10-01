@@ -1,6 +1,6 @@
 # Canonical Task List — Cinematic Identity
 
-**Status:** Phase 2 preparation; application tasks remain unstarted until sign-off.
+**Status:** Milestone 1 approved and merged; Milestone 2 authorized on `feature/hero-section`. Hero merge and Milestone 3 remain owner-gated.
 Each task has acceptance, verification, dependency and concrete files. Generated upstream Spec Kit scaffold is a tool initialization exception, not handwritten app boilerplate. Application slices touch no more than five files each; generated framework baseline must be separately reviewed.
 
 ## Milestone 1 — feature/spec-kit-setup
@@ -29,14 +29,14 @@ Each task has acceptance, verification, dependency and concrete files. Generated
   - Acceptance: positive/negative contract checks, source hashes, link/placeholder/branch checks; design lint has no errors/warnings; token exports generated.
   - Verify: local check_specs.py, Spec Kit prerequisites, design CLI lint/export and git diff --check.
   - Depends: T004–T005. Files: scripts/check_specs.py, docs/tooling-lock.json, contracts/design.tokens.json, contracts/design.theme.css.
-- [ ] **T007 — Owner approves Milestone 1 and authorizes merge.**
+- [x] **T007 — Owner approves Milestone 1 and authorizes merge.**
   - Acceptance: owner explicitly accepts proposal package and merge; no automatic merge.
   - Verify: recorded owner decision, checks remain green and main has approved changes only.
   - Depends: T006. Files: docs/phase-2-review.md, .specify/memory/constitution.md, specs status metadata.
 
-## Milestone 2 — feature/hero-section (not started)
+## Milestone 2 — feature/hero-section (in progress)
 
-- [ ] **T008 — Establish the minimal runnable shell.**
+- [x] **T008 — Establish the minimal runnable shell.**
   - Acceptance: approved stack/lockfile, English semantic content and readable fallback; no speculative CMS/services.
   - Verify: planned lint/typecheck/build + JS-disabled page test.
   - Depends: T007 and branch from approved main. Files: framework baseline (generated setup, separately reviewed), app/layout.tsx, app/page.tsx, globals.css, lib/content.ts, content/en.json.

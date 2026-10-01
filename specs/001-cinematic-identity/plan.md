@@ -1,7 +1,7 @@
 # Implementation Plan: Cinematic Identity
 
 **Branch:** `feature/spec-kit-setup` | **Prepared:** 2026-10-01 | **Spec:** `spec.md`
-**Status:** Draft for sign-off. No app packages or app directories have been created.
+**Status:** Owner-approved; Milestone 2 implementation is active on `feature/hero-section`. The project structure below is now being realized incrementally; Hero → About remains separately gated.
 
 ## Summary
 One Next.js site, one client cinematic boundary, one scene progress authority, semantic server content. Milestone 2 creates the portrait matte and cinematic Hero. Milestone 3 adds the reversible Hero → About interval. Later scenes have their own specs/branches. No microservices, store library, CMS vendor or extra animation engine is scaffolded now.
@@ -59,7 +59,7 @@ Current, runnable now from project root:
 ```bash
 .tools/spec-kit-venv/Scripts/specify.exe version
 SPECIFY_FEATURE=001-cinematic-identity bash .specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks
-.tools/spec-kit-venv/Scripts/python.exe scripts/check_specs.py
+.tools/spec-kit-venv/Scripts/python.exe scripts/check_specs.py --hero
 .tools/designmd/node_modules/.bin/designmd lint DESIGN.md
 git -c safe.directory=D:/AI_Engineer/Portfolio diff --check
 ```

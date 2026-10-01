@@ -1,6 +1,6 @@
 # AI Engineer Portfolio Constitution
 
-**Version:** 0.1.0-draft | **Prepared:** 2026-10-01 | **Ratification:** pending owner sign-off
+**Version:** 1.0.0 | **Prepared:** 2026-10-01 | **Ratification:** owner explicitly approved Milestone 1; see `docs/milestone-1-approval.md`.
 
 ## Core Principles
 
@@ -29,7 +29,7 @@ Versioned, validated content contracts separate profile/copy/media/links from st
 
 ## Review Workflow
 
-Main baseline docs/assets were explicitly authorized. Milestone 1 changes stay on `feature/spec-kit-setup`. Milestones 2 and 3 have distinct branches; subsequent components remain separately gated. Documentation/contract checks and visual review precede sign-off. Application implementation and all merges require explicit owner approval. A documentation commit is not an approval.
+Milestone 1 was explicitly approved and merged into main. Milestone 2 is authorized on `feature/hero-section`; Milestone 3 remains separately gated on `feature/hero-about-transition`. Technical checks, visual review and explicit owner approval precede each further merge. A documentation commit is not an approval.
 
 ## Governance
 

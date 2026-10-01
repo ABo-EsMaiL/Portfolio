@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 import re
 import subprocess
+import sys
 from urllib.parse import unquote, urlsplit
 
 from jsonschema import Draft202012Validator
@@ -80,6 +81,7 @@ def git(*args):
 
 
 def main():
+    hero_mode = '--hero' in sys.argv
     if not __debug__:
         raise RuntimeError('Run this assert-based check without python -O')
     positive = 0
@@ -155,18 +157,27 @@ def main():
     lock = json.loads((ROOT / 'docs/tooling-lock.json').read_text(encoding='utf-8'))
     for filename, expected in lock['sourceSha256'].items():
         assert hashlib.sha256((ROOT / filename).read_bytes()).hexdigest() == expected, filename
-        assert hashlib.sha256(git('show', 'main:' + filename)).hexdigest() == lock['baselineSourceSha256'][filename], filename
-        baseline = git('show', 'main:' + filename)
+        assert hashlib.sha256(git('show', lock['gitBaseline'] + ':' + filename)).hexdigest() == lock['baselineSourceSha256'][filename], filename
+        baseline = git('show', lock['gitBaseline'] + ':' + filename)
         current = (ROOT / filename).read_bytes()
         if filename.endswith('.md'):
-            assert current.replace(b'\r\n', b'\n') == baseline, 'Source content differs beyond baseline newline normalization'
+            assert current.replace(b'\r\n', b'\n') == baseline.replace(b'\r\n', b'\n'), 'Source content differs beyond baseline newline normalization'
         else:
             assert current == baseline, filename
     assert EXAMPLE['portrait']['sha256'] == lock['sourceSha256'][EXAMPLE['portrait']['source']]
-    assert git('branch', '--show-current').decode().strip() == 'feature/spec-kit-setup'
-    assert git('rev-parse', '--short', 'main').decode().strip() == lock['gitBaseline']
+    branch = git('branch', '--show-current').decode().strip()
+    assert branch == ('feature/hero-section' if hero_mode else 'feature/spec-kit-setup')
+    if hero_mode:
+        git('merge-base', '--is-ancestor', lock['gitBaseline'], 'main')
+        git('merge-base', '--is-ancestor', 'milestone-1^{}', 'main')
+    else:
+        assert git('rev-parse', '--short', 'main').decode().strip() == lock['gitBaseline']
     assert git('remote').strip() == b''
-    assert not any((ROOT / n).exists() for n in ['src', 'app', 'public', 'node_modules', 'package.json'])
+    if hero_mode:
+        assert (ROOT / 'src/app/page.tsx').is_file() and (ROOT / 'package.json').is_file()
+        assert not any(p.suffix.lower() in {'.onnx', '.pt', '.pth'} for p in (ROOT / 'public').rglob('*')), 'Offline models must never ship to browsers'
+    else:
+        assert not any((ROOT / n).exists() for n in ['src', 'app', 'public', 'node_modules', 'package.json'])
     integration = json.loads((ROOT / '.specify/integration.json').read_text(encoding='utf-8'))
     assert integration['default_integration'] == 'generic'
     assert integration['integration_settings']['generic']['parsed_options']['commands_dir'] == '.specify/commands'
@@ -201,8 +212,8 @@ def main():
     print(json.dumps({'status': 'PASS', 'positiveContractCases': positive, 'negativeCasesRejected': len(rejected),
                       'functionalRequirements': len(ids), 'sourceHashesUnchanged': len(lock['sourceSha256']),
                       'localLinksVerified': link_count, 'diagramViewports': [v['width'] for v in diagram['viewports']],
-                      'applicationCodeCreated': False, 'currentBranch': 'feature/spec-kit-setup',
-                      'mainBaselineUnmerged': lock['gitBaseline'], 'cacheBoundaryIncidentDisclosed': True}, indent=2))
+                      'applicationCodeCreated': hero_mode, 'currentBranch': branch,
+                      'mainHead': git('rev-parse', '--short', 'main').decode().strip(), 'cacheBoundaryIncidentDisclosed': True}, indent=2))
 
 
 if __name__ == '__main__':

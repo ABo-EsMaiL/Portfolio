@@ -6,7 +6,7 @@ The feature selector is explicit because Spec Kit's local active-feature state i
 ```bash
 .tools/spec-kit-venv/Scripts/specify.exe version
 SPECIFY_FEATURE=001-cinematic-identity bash .specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks
-.tools/spec-kit-venv/Scripts/python.exe scripts/check_specs.py
+.tools/spec-kit-venv/Scripts/python.exe scripts/check_specs.py --hero
 .tools/designmd/node_modules/.bin/designmd lint DESIGN.md
 git -c safe.directory=D:/AI_Engineer/Portfolio status --short --branch
 ```

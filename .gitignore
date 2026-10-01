@@ -4,6 +4,7 @@
 /tmp/
 __pycache__/
 *.py[cod]
+*.tsbuildinfo
 # Application outputs (application not initialized yet)
 /node_modules/
 /.next/
