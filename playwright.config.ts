@@ -1,0 +1,6 @@
+import { defineConfig } from '@playwright/test';
+export default defineConfig({
+  testDir: './tests', testMatch: '**/*.spec.ts', workers: 1,
+  outputDir: '.tools/test-results', reporter: 'list',
+  use: { baseURL: 'http://127.0.0.1:3000', channel: 'msedge', headless: true },
+});
