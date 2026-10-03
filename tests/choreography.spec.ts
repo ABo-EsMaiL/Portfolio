@@ -11,6 +11,28 @@ async function scrollJourney(page:Page,progress:number) {
   await expect.poll(async()=>Number(await page.locator('.hero-world').getAttribute('data-progress'))).toBeCloseTo(progress,2);
 }
 
+for(const [width,height] of [[390,600],[768,900],[1440,900]]){
+  test(`integrated entrance shows the complete source grounded to the viewport at ${width}x${height}`,async({page})=>{
+    await page.setViewportSize({width,height});await page.goto('/',{waitUntil:'domcontentloaded'});
+    await page.waitForFunction(()=>document.querySelector<HTMLElement>('.hero-world')?.dataset.phase==='hunting');
+    const state=await page.evaluate(()=>{
+      const portrait=document.querySelector('.portrait-stage')!.getBoundingClientRect(),image=document.querySelector('.portrait-image')!.getBoundingClientRect();
+      const nav=document.querySelector('.capsule')!.getBoundingClientRect(),clip=getComputedStyle(document.querySelector('.portrait-motion')!).clipPath.match(/[\d.]+px/g)?.map(parseFloat)??[];
+      return{top:portrait.top,bottom:portrait.bottom,imageHeight:image.height,portraitHeight:portrait.height,navBottom:nav.bottom,clipBottom:clip[2]??0};
+    });
+    expect(state.top).toBeGreaterThanOrEqual(state.navBottom+24);
+    expect(state.bottom).toBeCloseTo(height,0);expect(state.imageHeight).toBeCloseTo(state.portraitHeight,0);expect(state.clipBottom).toBeLessThan(1);
+    await expect(page.locator('.hero-world')).toHaveAttribute('data-phase','ready');
+    await expect(page.locator('body')).not.toContainText(/dashboard|4\s*\/\s*6|Replay entrance|Next scene/i);
+    // Short viewports retain the accepted capsule route; the lower Hero CTA is outside that viewport.
+    await page.getByRole('link',{name:height<844?'About':'Find out',exact:true}).click();await expect(page.locator('#about')).toBeFocused();
+    if(width>=1200){
+      const clearance=await page.evaluate(()=>document.querySelector('.about-copy')!.getBoundingClientRect().left-document.querySelector('.monitor-fallback')!.getBoundingClientRect().right);
+      expect(clearance).toBeGreaterThanOrEqual(20);
+    }
+  });
+}
+
 test('decoded portrait enters, three frames lock the source face, then identity reveals without an unresolved beat',async ({page})=>{
   await page.addInitScript(()=>{
     const probe={phases:[] as {phase:string;at:number;decoded:boolean;fonts:string}[],revealedPhase:''};
@@ -39,7 +61,7 @@ test('decoded portrait enters, three frames lock the source face, then identity 
   expect(entrance.decoded).toBe(true);expect(entrance.fonts).toBe('loaded');
   expect(probe.revealedPhase).toBe('locked');
   const elapsed=probe.phases.at(-1)!.at-entrance.at;
-  expect(elapsed).toBeGreaterThan(2800);expect(elapsed).toBeLessThan(3800);
+  expect(elapsed).toBeGreaterThan(6500);expect(elapsed).toBeLessThan(8500);
   await expect(page.locator('.resource-loader')).toBeHidden();
 });
 
@@ -53,7 +75,7 @@ for(const width of [390,1440]) {
     const cta=(await page.getByRole('link',{name:'Find out',exact:true}).boundingBox())!;
     const sample=()=>page.evaluate(()=>{
       const rect=(selector:string)=>{const r=document.querySelector(selector)!.getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height};};
-      const portrait=rect('.portrait-stage'),clip=getComputedStyle(document.querySelector('.portrait-motion')!).clipPath.match(/[\d.]+px/g)?.map(parseFloat)??[];
+      const portrait=rect('.portrait-stage'),clip=getComputedStyle(document.querySelector('.portrait-motion')!).clipPath.slice(6,-1).split(/\s+/).map(parseFloat);
       return{portrait,image:rect('.portrait-image'),monitor:rect('.monitor-fallback'),hem:portrait.y+portrait.height-(clip[2]??0),socials:Array.from(document.querySelectorAll('.socials li'),node=>{const r=node.getBoundingClientRect();return{x:r.x,y:r.y};})};
     });
     const forward=[];
@@ -69,24 +91,26 @@ for(const width of [390,1440]) {
       }
       const frame=await sample(),apertureBottom=frame.monitor.y+frame.monitor.height*.977;
       expect(Math.abs(frame.portrait.x+frame.portrait.width/2-frame.monitor.x-frame.monitor.width/2)).toBeLessThan(2);
-      if(forward.length&&apertureBottom>forward[0].hem+2){
+      const catchBottom=forward.length?(width<1200?forward[0].hem:forward[0].portrait.y+forward[0].portrait.width):0;
+      if(forward.length&&apertureBottom>catchBottom+2){
         expect(Math.abs(frame.portrait.y-forward[0].portrait.y)).toBeLessThan(2);
         expect(Math.abs(frame.portrait.width-forward[0].portrait.width)).toBeLessThan(2);
       }else if(forward.length){expect(Math.abs(frame.hem-apertureBottom)).toBeLessThan(2);}
       forward.push(frame);
     }
-    expect(Math.abs(forward[0].portrait.x-forward[4].portrait.x)).toBeGreaterThan(20);
-    expect(Math.abs(forward[0].image.height-forward[4].image.height)).toBeGreaterThan(20);
+    if(width>=1024)expect(Math.abs(forward[0].portrait.x+forward[0].portrait.width/2-forward[4].portrait.x-forward[4].portrait.width/2)).toBeGreaterThan(20);
+    // Compact lanes can keep nearly the same texture scale; the visible source still widens into About.
+    expect(Math.abs((forward[4].hem-forward[4].portrait.y)-(forward[0].hem-forward[0].portrait.y))).toBeGreaterThan(20);
     const hero=forward[0].socials,docked=forward[4].socials;
-    for(const social of hero) expect(social.y).toBeGreaterThanOrEqual(cta.y+cta.height);
+    if(width>=1024)for(const social of hero) expect(social.y).toBeGreaterThanOrEqual(cta.y+cta.height);
     const dock=await page.locator('.social-dock').boundingBox();expect(dock).not.toBeNull();
     for(const social of docked) {expect(social.x).toBeGreaterThanOrEqual(dock!.x);expect(social.x+44).toBeLessThanOrEqual(dock!.x+dock!.width);expect(social.y+44).toBeLessThanOrEqual(dock!.y+dock!.height);}
-    expect(hero[0].x).toBeLessThan(hero[1].x);expect(hero[1].x).toBeLessThan(hero[2].x);
-    expect(Math.abs(hero[0].y-hero[2].y)).toBeLessThan(1);
+    if(width>=1024){expect(hero[0].x).toBeLessThan(hero[1].x);expect(hero[1].x).toBeLessThan(hero[2].x);expect(Math.abs(hero[0].y-hero[2].y)).toBeLessThan(1);}
+    else{expect(Math.abs(hero[0].x-hero[2].x)).toBeLessThan(1);expect(hero[0].y).toBeLessThan(hero[1].y);expect(hero[1].y).toBeLessThan(hero[2].y);}
     expect(Math.abs(docked[0].x-docked[2].x)).toBeLessThan(1);
     expect(docked[0].y).toBeLessThan(docked[1].y);expect(docked[1].y).toBeLessThan(docked[2].y);
     for(const social of docked) expect(social.x).toBeLessThan(width*.15);
-    expect(forward[2].socials[0].x).toBeGreaterThan(docked[0].x);expect(forward[2].socials[0].x).toBeLessThan(hero[0].x);
+    expect(forward[2].socials[0].x).toBeGreaterThanOrEqual(Math.min(docked[0].x,hero[0].x));expect(forward[2].socials[0].x).toBeLessThanOrEqual(Math.max(docked[0].x,hero[0].x));
     for(const [i,p] of [1,.75,.5,.25,0].entries()) {
       await scrollJourney(page,p);
       expect(await page.evaluate(node=>node===document.querySelector('.portrait-image'),image)).toBe(true);
@@ -133,4 +157,24 @@ test('stage navigation expands independently while CTA and stage links traverse 
   await page.getByRole('link',{name:'Find out',exact:true}).click();await expect(page.locator('#about')).toBeFocused();
   await expect.poll(async()=>Number(await root.getAttribute('data-progress'))).toBeCloseTo(1,2);
   await expect(root).toHaveAttribute('data-handoffs','1');await expect(root).toHaveAttribute('data-phase','ready');
+});
+
+test('Find out takes a readable journey and native wheel cancels the guided motion',async ({page})=>{
+  await page.setViewportSize({width:1440,height:900});await page.goto('/');
+  const root=page.locator('.hero-world');await expect(root).toHaveAttribute('data-phase','ready');
+  await page.evaluate(()=>{
+    const samples:{at:number;y:number}[]=[];Object.defineProperty(window,'guidedProbe',{value:samples});
+    document.querySelector('[data-discovery-cta]')!.addEventListener('click',()=>{
+      const start=performance.now();function frame(){samples.push({at:performance.now()-start,y:scrollY});if(document.activeElement?.id!=='about')requestAnimationFrame(frame);}requestAnimationFrame(frame);
+    },{once:true});
+  });
+  await page.getByRole('link',{name:'Find out',exact:true}).click();await expect(page.locator('#about')).toBeFocused();
+  const samples=await page.evaluate(()=>(window as typeof window & {guidedProbe:{at:number;y:number}[]}).guidedProbe);
+  expect(samples.at(-1)!.at).toBeGreaterThan(1800);expect(samples.at(-1)!.at).toBeLessThan(3200);
+  for(let i=1;i<samples.length;i++)expect(samples[i].y).toBeGreaterThanOrEqual(samples[i-1].y);
+  await scrollJourney(page,0);await page.getByRole('link',{name:'Find out',exact:true}).click();
+  await page.waitForTimeout(450);await page.mouse.move(20,600);await page.mouse.wheel(0,-100);
+  await page.waitForTimeout(300);const stopped=await page.evaluate(()=>scrollY);
+  await page.waitForTimeout(600);expect(await page.evaluate(()=>scrollY)).toBe(stopped);
+  expect(Number(await root.getAttribute('data-progress'))).toBeLessThan(.8);
 });

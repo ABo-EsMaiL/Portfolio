@@ -166,15 +166,30 @@ def main():
             assert current == baseline, filename
     assert EXAMPLE['portrait']['sha256'] == lock['sourceSha256'][EXAMPLE['portrait']['source']]
     branch = git('branch', '--show-current').decode().strip()
-    assert branch in ({'feature/hero-section', 'feature/hero-about-transition'} if hero_mode else {'feature/spec-kit-setup'})
+    assert branch in ({'main', 'feature/hero-section', 'feature/hero-about-transition', 'feature/engineering-world-study', 'feature/hero-about-integrated-refinement'} if hero_mode else {'feature/spec-kit-setup'})
+    if hero_mode and branch == 'main':
+        assert (ROOT / 'docs/hero-about-owner-approval.md').is_file(), 'Main implementation requires explicit owner merge approval'
     if branch == 'feature/hero-about-transition':
         assert (ROOT / 'docs/owner-narrative-alignment.md').is_file(), 'Combined review authorization must be recorded'
+    if branch in {'feature/engineering-world-study', 'feature/hero-about-integrated-refinement'}:
+        assert (ROOT / 'docs/engineering-world-direction.md').is_file(), 'Study scope and pending integration gate must be recorded'
+        checkpoint = 'checkpoint/hero-about-accepted-base'
+        assert git('rev-parse', checkpoint).decode().strip() == 'ad37b5512b3f690d23af92b66a6dd6754f9dc5d6', 'Recovery checkpoint must remain frozen'
+        git('merge-base', '--is-ancestor', checkpoint, 'HEAD')
+        changed = set(git('diff', '--name-only', checkpoint, '--', 'src').decode().splitlines())
+        allowed = {'src/lib/hero.ts'} if branch == 'feature/engineering-world-study' else {'src/lib/hero.ts', 'src/lib/journey.ts', 'src/lib/scene.ts', 'src/app/page.tsx', 'src/app/globals.css'}
+        assert changed <= allowed, 'Review branch must not change unrelated composition or implement unapproved public stages'
+        assert not git('ls-files', '--others', '--exclude-standard', '--', 'src').strip(), 'Study must not add public stage source files'
     if hero_mode:
         git('merge-base', '--is-ancestor', lock['gitBaseline'], 'main')
         git('merge-base', '--is-ancestor', 'milestone-1^{}', 'main')
     else:
         assert git('rev-parse', '--short', 'main').decode().strip() == lock['gitBaseline']
-    assert git('remote').strip() == b''
+    if (ROOT / 'docs/hero-about-owner-approval.md').is_file():
+        assert git('remote').decode().strip() == 'origin', 'Only the owner-authorized remote is allowed'
+        assert git('remote', 'get-url', 'origin').decode().strip() == 'https://github.com/ABo-EsMaiL/Portfolio.git'
+    else:
+        assert git('remote').strip() == b''
     if hero_mode:
         assert (ROOT / 'src/app/page.tsx').is_file() and (ROOT / 'package.json').is_file()
         assert not any(p.suffix.lower() in {'.onnx', '.pt', '.pth'} for p in (ROOT / 'public').rglob('*')), 'Offline models must never ship to browsers'

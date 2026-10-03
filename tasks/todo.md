@@ -107,3 +107,37 @@ Source and proposed technical approach: `../docs/owner-narrative-alignment.md`. 
   - Acceptance: technical/visual evidence reviewed and explicit merge approval; only then specify Capabilities.
   - Verify: recorded sign-off, clean branch and passing checks.
   - Depends: T016. Files: milestone approval doc/spec status.
+
+## Owner extension: recovery checkpoint and engineering-world study
+
+- [x] **W001 - Preserve the accepted functional foundation locally.**
+  - Acceptance: source/assets/review evidence committed to frozen checkpoint branch/tag; ignored working experiments archived and read-back hash-verified; developer caches/credentials excluded; no remote or main merge.
+  - Verified: `ad37b55`, annotated tag, Git bundle verify and 7,071 archive members. Evidence: `../docs/checkpoint-hero-about.md`.
+- [x] **W002 - Slow guided navigation without changing native scrolling.**
+  - Acceptance: full range 2.4s gentle sine-in-out, remaining-distance duration; wheel/touch/navigation keys interrupt; focus/hash complete only on arrival; reduced-motion uses native anchor.
+  - Verified: regression fails on old 0.9s and passes after the change; lint/typecheck/build, 11 unit and 45 production browser tests pass.
+  - Files: hero.ts and choreography.spec.ts. Depends: W001.
+- [x] **W003 - Produce an independent environment/entrance/next-scene study.**
+  - Acceptance: actual Three.js interior/exterior proposal, full-source-to-Hero detection zoom and selectable CV-backed capability assembly; no new package, image generation, public next-stage route or duplicate skill inventory.
+  - Verified: study rendered at 320/390/768/1440px, real draw calls, source-anchored face-frame samples, scene/domain controls, overflow/error/network and reduced-motion/no-WebGL checks. Evidence: `../docs/engineering-study-verification.json` and corresponding screenshots. This is study completion, not aesthetic acceptance or production integration.
+  - Files: engineering-world-study.html, engineering-world-direction.md, local review server/check. Depends: W001.
+- [ ] **W004 - Owner reviews direction and confirms next-stage scope before integration.**
+  - Owner outcome: environment/next-scene study rejected. W003 records historical production of a study, not a passing visual review. Resume actual Hero/About correction; no environment/Skills integration.
+  - Acceptance: explicit review of full-source entrance, both environments and proposed Skills scene; clarify whether the owner's intended next scene is Skills. Preserve accepted app controls/content; no later-stage implementation before the scope/spec gate.
+  - Verification: record owner decision, then define scoped production tasks and device/performance protocol. Future dashboard remains required before launch, not implemented by this study.
+  - Depends: W002-W003. No older milestone acceptance gate is closed by this checkpoint.
+
+## Corrective actual-site review
+
+- [x] **W005 - Integrate the retained entrance into the actual Next.js route.**
+  - Scope: `feature/hero-about-integrated-refinement`; whole-source portrait at the visible viewport bottom, face lock/reframe, existing Hero/About geometry and gentle Find out retained. No study UI, planning copy or rejected backgrounds. No new stages.
+  - Verify: entrance/source/face registration, short viewport, 768px screen/copy clearance, production browser suite, unit, lint, typecheck, build and owner review. Checkpoint stays frozen.
+  - Technical verification complete: production build/lint/typecheck/contracts, 12 unit and 48 browser tests passed. Actual-route capture check covers eight viewport sizes, full-source grounding, zoom-time face registration and reversible travel; evidence is `../docs/integrated-site-verification.json`. The checkbox remains open for owner visual review. No replacement-background or later-stage acceptance is claimed.
+
+- [x] **W006 - Correct the rejected desktop centering, intro order and compact contact lanes.**
+  - Newer owner decision: preserve the accepted desktop left-screen/right-CV composition; desktop nodes precede streamed text; no compact annotation nodes; neutral recognizable contact glyphs without visible names, brand backplates/white glyphs only on hover or keyboard focus.
+  - Implementation: current actual Next.js route only; shared DOM/WebGL compact lane geometry, short-landscape sizing and measured copy/CTA clearance. Source entrance stays viewport-centered and grounded; portrait remains centered inside the moving monitor during reversible travel. No new stage, replacement background or merge.
+  - Verification: 13 unit tests, 65 production browser tests, build/lint/typecheck/contracts and a 17-viewport, 36-capture rendered verification pass. Evidence: `../docs/owner-review-correction.md`. Checkbox remains open for owner visual acceptance; physical-phone/performance gaps are not closed by emulation.
+  - Newer phone/tablet review: full available source to the visible phone bottom, stable centered tablet columns around 1000–1038px, distinct left copy, unchanged accepted desktop portrait/monitor geometry. Current verification is 14 unit / 66 browser tests plus build/lint/typecheck/contracts and eight representative viewports with 24 captures (`../tmp/mobile-fill/verification.json`). No exhaustive width sweep or next stage; owner acceptance remains open.
+  - Latest localized spacing review: lower Hero side copy in the near-1209px scrollbar/typography mismatch, widen stacked About within its existing column, and anchor the skill caption beneath the monitor/stand instead of the CV footer. Current verification: 14 unit / 68 browser tests, build/lint/typecheck/contracts and seven representative viewports with fourteen captures (`../tmp/spacing-review/verification.json`). 1440px portrait/monitor geometry is unchanged. Owner acceptance remains open.
+  - Superseding owner acceptance: the current actual Hero/About is approved for preservation and merge/push to main; both backgrounds are deferred. Next connected scene is authorized as a separate review branch, not as an accepted main merge. See `../docs/hero-about-owner-approval.md`. Native-device/performance gaps remain open.

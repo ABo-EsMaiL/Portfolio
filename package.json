@@ -10,7 +10,9 @@
     "lint": "eslint src tests",
     "typecheck": "tsc --noEmit",
     "test:unit": "node --test tests/*.test.ts",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "review:world": "node scripts/serve_engineering_study.mjs",
+    "test:world-study": "node scripts/check_engineering_study.mjs"
   },
   "dependencies": {
     "next": "16.3.8",

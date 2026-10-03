@@ -1,0 +1,20 @@
+{
+  "accessibility": [
+    {
+      "scene": "hero",
+      "violations": 0
+    },
+    {
+      "scene": "about",
+      "violations": 0
+    },
+    {
+      "scene": "skills",
+      "violations": 0
+    }
+  ],
+  "picking": true,
+  "pause": true,
+  "contextLoss": true,
+  "noJsNotes": true
+}

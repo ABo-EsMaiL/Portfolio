@@ -1,0 +1,115 @@
+{
+  "url": "http://127.0.0.1:3003/",
+  "viewports": [
+    {
+      "width": 320,
+      "scenes": [
+        {
+          "scene": "hero",
+          "screenshot": "docs/engineering-study-320-hero.png",
+          "drawCalls": 42,
+          "triangles": 48
+        },
+        {
+          "scene": "about",
+          "screenshot": "docs/engineering-study-320-about.png",
+          "drawCalls": 57,
+          "triangles": 2746
+        },
+        {
+          "scene": "skills",
+          "screenshot": "docs/engineering-study-320-skills.png",
+          "drawCalls": 59,
+          "triangles": 8328
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "scenes": [
+        {
+          "scene": "hero",
+          "screenshot": "docs/engineering-study-390-hero.png",
+          "drawCalls": 42,
+          "triangles": 48
+        },
+        {
+          "scene": "about",
+          "screenshot": "docs/engineering-study-390-about.png",
+          "drawCalls": 57,
+          "triangles": 2746
+        },
+        {
+          "scene": "skills",
+          "screenshot": "docs/engineering-study-390-skills.png",
+          "drawCalls": 59,
+          "triangles": 8328
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "scenes": [
+        {
+          "scene": "hero",
+          "screenshot": "docs/engineering-study-768-hero.png",
+          "drawCalls": 42,
+          "triangles": 48
+        },
+        {
+          "scene": "about",
+          "screenshot": "docs/engineering-study-768-about.png",
+          "drawCalls": 55,
+          "triangles": 2650
+        },
+        {
+          "scene": "skills",
+          "screenshot": "docs/engineering-study-768-skills.png",
+          "drawCalls": 54,
+          "triangles": 8196
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "scenes": [
+        {
+          "scene": "hero",
+          "screenshot": "docs/engineering-study-1440-hero.png",
+          "drawCalls": 42,
+          "triangles": 48
+        },
+        {
+          "scene": "about",
+          "screenshot": "docs/engineering-study-1440-about.png",
+          "drawCalls": 55,
+          "triangles": 2650
+        },
+        {
+          "scene": "skills",
+          "screenshot": "docs/engineering-study-1440-skills.png",
+          "drawCalls": 56,
+          "triangles": 8152
+        }
+      ]
+    }
+  ],
+  "intro": [
+    {
+      "width": 1440,
+      "samples": 69,
+      "maxFaceError": 0.4956461588541856,
+      "initial": {
+        "width": 327.1875,
+        "height": 621.671875,
+        "clip": "inset(0px)"
+      }
+    }
+  ],
+  "modes": [
+    "reduced motion / keyboard selection",
+    "no-WebGL readable capability fallback"
+  ],
+  "errors": [],
+  "requests": []
+}

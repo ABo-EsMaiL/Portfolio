@@ -110,3 +110,49 @@ The owner praised the current foundation while explicitly requesting more refine
 - The repeated Grammarly issue supersedes the earlier one-shot normalization assumption. Verify metadata reinjection after cleanup, not just parser-time injection, and keep unrelated hydration diagnostics visible. No browser extension settings or global warning suppression are authorized.
 
 These remain local unmerged review changes, not approval to publish or merge.
+
+## Recovery checkpoint and engineering-world study
+
+The newer owner attachment is `pasted_content_2026-10-03_01-03-25-508_d465c5.txt`. It accepts the functional foundation as a recovery point, requests a local checkpoint containing source/assets/review work, and asks for stronger AI/software-engineering environments, full-source-before-lock entrance, slower Find out travel and a concrete next-scene proposal. This is not merge or remote-publication approval.
+
+- Frozen checkpoint: `checkpoint/hero-about-accepted-base`, commit `ad37b5512b3f690d23af92b66a6dd6754f9dc5d6`, plus annotated tag, verified working-file archive and Git bundle. See `checkpoint-hero-about.md`.
+- Isolated work branch: `feature/engineering-world-study`. Keep current application layout/copy/portrait-travel functions intact; the guided-navigation speed correction is the immediate application change.
+- Show the larger art direction as a runnable independent study before integrating it, consistent with the existing design-sign-off gate. See `engineering-world-direction.md` and `engineering-world-study.html`. Its scene switches are review controls, not the production scroll journey.
+- The proposed entrance begins with the complete available source body at the lower frame, locks the authored face, then zooms/downshifts into the accepted Hero. No generated body or client facial model.
+- Propose Skills as the next cable-connected scene, but clarify the owner's intended next-stage scope before a public-stage implementation. Later Experience/Projects/Contact remain unimplemented.
+- The owner reiterates a future dashboard for editable copy, projects, skills and social icons, with synchronized consumption and robust overflow. Record concrete current limitations and a validated draft/publish boundary; do not build dashboard/auth/storage now.
+- `stop-slop` is a prose-editing skill. Use it to avoid generic copy; it does not provide visual modelling or image-generation capabilities.
+
+## Rejected engineering study: return to the actual Next.js journey
+
+The owner's subsequent direct review rejects the independent HTML study, boxed background, cable treatment, on-screen planning notes and 768px overlap. It is not the accepted website and must not be integrated. Continue actual Hero/About on `feature/hero-about-integrated-refinement`, keeping the checkpoint composition and existing controls. The entrance concept is retained: full original source grounded to the visible browser viewport, authored face lock, then same-image zoom into the existing Hero. Keep source aspect, common DOM/WebGL registration and early interruption. Verify the actual 768px route rather than claiming a clean overflow test certifies the rejected study's composition. Dashboard planning stays in docs. Background redesign, later stages, merge and publication remain unaccepted.
+
+## Owner actual-site review: annotation, contacts and intermediate layouts
+
+Source: direct owner attachment `pasted_content_2026-10-03_03-47-22-292_109b8e.txt` and four screenshots. The owner explicitly accepts portrait/scroll motion and requests placement corrections, not a new background or cable style. Extend the existing review branch's CSS scope only for these changes: centered headline/overline and PC, tablet contacts on the left and name/role/CTA beside the head, consistent stacked About below the screen where side-by-side content cannot fit, and no detached square source hem in wide Hero views. Retain the existing full-source texture, reversible catch/settle, content and contact destinations. Full body means the available source photograph, not invented legs.
+
+After face lock/reframing, connect the real left/right Hero information to the face with temporary outlines, hold them about 1–2 seconds, then dissolve only the detector/connector/card outlines into drifting dust. Leave the real photograph and copy intact. Use the existing GSAP authority; early input skips the decoration, reduced motion remains static, and reversing the visitor journey never replays the intro. Contacts keep their current round shapes, with brand-colored backplates and white glyphs. Finish and review Hero/About before the next scene. This authorizes these actual-site corrections, not acceptance, merge, publication or later stages.
+
+## Newer owner correction: preserve composition, node-first streaming and neutral contacts
+
+The subsequent direct review and `image_f0e448.png` reject the implementation's viewport-centered desktop monitor and premature text. These decisions supersede the earlier ambiguous centering/backplate interpretation:
+
+- Desktop About restores the checkpoint's left monitor/portrait column and right CV column. The person is centered inside the moving monitor, not a monitor centered across the entire desktop viewport. Keep stacked About at constrained widths to prevent the reported mixed-tablet overflow.
+- Desktop intro shows the connected nodes before streaming the real information word by word. Hold for 1.6 seconds after the complete stream, then dissolve the decorative outlines. Early input restores complete readable text without replay. This is authored presentation, not client model inference.
+- Phone/tablet side-lane Hero has no annotation cards, connectors or dust. Name/role/CTA sit on the person's right and recognizable contact glyphs on the left. Scale visual typography, portrait and glyphs to width/orientation without shrinking contact hit targets below accessibility minimums. Allow compact name/role wrapping rather than overflowing the right lane.
+- Contacts return to their previous neutral circular treatment at rest. Only fine-pointer hover or keyboard focus changes the entire backplate to its brand color with a white glyph. Remove visible contact names; preserve their accessible labels and exact destinations.
+- Portrait/landscape must be visually inspected, including shoulder/text clearance; passing rectangles or a viewport-centered unit assertion do not establish correct art direction.
+
+Continue on `feature/hero-about-integrated-refinement`. No new scene, background replacement, merge, commit, remote write or deployment is approved. See `owner-review-correction.md` for the current verification evidence; owner visual acceptance remains open.
+
+## Newer owner correction: mobile occupancy and stable tablet columns
+
+The next direct review supplies `image_42b835.png` (440x956 phone) and `image_eced14.png` (tablet). It rejects the floating torso-only phone crop and empty lower half. In compact Hero, display the available same-source body down to the visible viewport bottom; keep the initial monitor beyond the view and preserve the frame-catch/return journey. Do not generate missing legs or change the accepted desktop composition.
+
+Around 1000–1038px, center the person and use narrative on the left and identity/focus on the right, without the old 1024px content/layout discontinuity. Remove the repeated left slogan and use distinct CV-grounded copy; current proposal is `From pixels to decisions`. Keep decorative annotation nodes out of compact views. The owner explicitly declines an exhaustive viewport-increment sweep; use a small set of representative phone, problematic tablet and desktop checks. Technical verification is not owner visual acceptance.
+
+## Newer owner correction: local Hero spacing and stacked About width
+
+The owner supplies `image_f321d3.png` and `image_dc4516.png`. Lower the Hero side information locally around 1209px to preserve headline clearance; do not move already satisfactory distant widths. Widen the constrained About biography into its existing available stacked column from the reported 1214px region toward phone sizes, instead of retaining the desktop paragraph measure and wasting the right half. Keep the accepted desktop two-column layout. Anchor `Skills feed the system` beneath the monitor/stand at every enhanced size, not to the bottom of About copy; it must not overlap the stack tags.
+
+The reported narrow Hero issue reproduces with a stable native scrollbar gutter: CSS viewport typography remains desktop-sized while `stage.clientWidth` selects compact geometry. Use measured headline clearance for that mismatch and the existing GSAP authority. About text styling follows the measured stacked layout rather than a competing viewport breakpoint. This remains local correction work on the same feature branch, not owner acceptance, merge or next-stage authorization.

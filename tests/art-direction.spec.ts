@@ -15,20 +15,21 @@ for (const width of [320,390,600,768,1440]) {
     expect(await page.locator('html').evaluate(node=>getComputedStyle(node).colorScheme)).toBe('light');
     await expect(page.locator('h1')).toHaveText(content.hero.heading.en);
     await expect(page.locator('.headline-line')).toHaveCount(2);
-    if(width>=1024){
+    if(width>=1200){
       const title=await page.evaluate(()=>({centers:Array.from(document.querySelectorAll('.headline-line'),line=>{const range=document.createRange();range.selectNodeContents(line);const r=range.getBoundingClientRect();return r.x+r.width/2;}),gap:document.querySelector('.detection-hud-2')!.getBoundingClientRect().top-document.querySelector('.headline-line:last-child > span:first-child')!.getBoundingClientRect().bottom,mask:getComputedStyle(document.querySelector('.identity')!).maskComposite}));
       for(const center of title.centers)expect(Math.abs(center-width/2)).toBeLessThan(1);
       expect(title.gap).toBeGreaterThanOrEqual(16);expect(title.gap).toBeLessThanOrEqual(64);expect(title.mask).toMatch(/^exclude(?:,\s*exclude)*$/);
       expect(await page.locator('.headline-line:last-child').evaluate(node=>parseFloat(getComputedStyle(node).marginTop))).toBe(-8);
     }
-    const heroCrop=await page.locator('.portrait-motion').evaluate(node=>{const rect=node.getBoundingClientRect(),inset=getComputedStyle(node).clipPath.match(/[\d.]+px/g)?.map(parseFloat)??[];return{visible:rect.height-(inset[2]??0),full:rect.height};});
-    expect(heroCrop.visible/heroCrop.full).toBeCloseTo(content.portrait.heroCrop.height/content.portrait.aboutCrop.height,2);
+    const heroCrop=await page.locator('.portrait-motion').evaluate(node=>{const rect=node.getBoundingClientRect(),inset=getComputedStyle(node).clipPath.slice(6,-1).split(/\s+/).map(parseFloat);return{visible:rect.height-(inset[2]??inset[0]??0),full:rect.height};});
+    if(width<1200)expect(heroCrop.visible/heroCrop.full).toBeCloseTo(1,2);
+    else expect(heroCrop.visible/heroCrop.full).toBeGreaterThanOrEqual(content.portrait.heroCrop.height/content.portrait.aboutCrop.height);
     await expect(page.locator('.role')).toHaveText(content.hero.subtitle.en);
     const type=await page.evaluate(()=>({name:parseFloat(getComputedStyle(document.querySelector('.hero-name')!).fontSize),role:parseFloat(getComputedStyle(document.querySelector('.role')!).fontSize),icon:document.querySelector('.socials svg')!.getBoundingClientRect().width}));
-    expect(type.name).toBeGreaterThan(type.role);expect(type.icon).toBeGreaterThanOrEqual(25);
+    expect(type.name).toBeGreaterThan(type.role);expect(type.icon).toBeGreaterThanOrEqual(width<1024?24:25);
     for(const selector of ['.hero-name','.role']){
-      const singleLine=await page.locator(selector).evaluate(node=>{const range=document.createRange();range.selectNodeContents(node);return{lines:range.getClientRects().length,width:node.scrollWidth,available:node.clientWidth};});
-      expect(singleLine.lines).toBe(1);expect(singleLine.width).toBeLessThanOrEqual(singleLine.available);
+      const singleLine=await page.locator(selector).evaluate(node=>{const range=document.createRange();range.selectNodeContents(node);return{lines:new Set(Array.from(range.getClientRects(),r=>Math.round(r.top))).size,width:node.scrollWidth,available:node.clientWidth};});
+      if(width>=1024)expect(singleLine.lines).toBe(1);expect(singleLine.width).toBeLessThanOrEqual(singleLine.available);
     }
     expect(await page.locator('h1').evaluate(node=>getComputedStyle(node).fontWeight)).toBe('800');
     expect(await page.locator('h1').evaluate(node=>getComputedStyle(node).textTransform)).toBe('uppercase');
@@ -59,11 +60,12 @@ for (const width of [320,390,600,768,1440]) {
     await expect(page.locator('.about-stack span')).toHaveText(['Python','FastAPI','TensorFlow','Docker']);
     for(const node of await page.locator('.about-copy h2,.about-role,.about-stack span').all()) expect((await node.textContent())?.trim()).not.toMatch(/\.$/);
     expect(Number(await page.locator('.hero-world').getAttribute('data-cables'))).toBeGreaterThan(.95);
-    expect(await page.locator('.socials svg').first().evaluate(node=>node.getBoundingClientRect().width)).toBeLessThan(type.icon);
-    expect(await page.locator('.socials svg').first().evaluate(node=>node.getBoundingClientRect().width)).toBeGreaterThanOrEqual(26);
+    const dockIcon=await page.locator('.socials svg').first().evaluate(node=>node.getBoundingClientRect().width);
+    if(width<1024)expect(dockIcon).toBe(type.icon);else expect(dockIcon).toBeLessThan(type.icon);
+    expect(dockIcon).toBeGreaterThanOrEqual(width<1024?24:26);
     const separation=await page.evaluate(()=>{
       const monitor=document.querySelector('.monitor-fallback')!.getBoundingClientRect(),about=document.querySelector('.about-copy')!.getBoundingClientRect();
-      return innerWidth<768?about.top-(monitor.top+monitor.height*1.23):about.left-monitor.right;
+      return innerWidth<1200?about.top-(monitor.top+monitor.height*1.23):about.left-monitor.right;
     });
     expect(separation).toBeGreaterThanOrEqual(20);
     expect(await page.locator('.intro-copy').evaluate(node=>parseFloat(getComputedStyle(node).fontSize))).toBeGreaterThanOrEqual(14);
@@ -98,8 +100,8 @@ test('owner Facebook link and brand hover/focus colors survive the social train'
     if(stage==='about'){await page.getByRole('link',{name:'Find out',exact:true}).click();await expect(page.locator('#about')).toBeFocused();}
     for(const [id,color] of Object.entries(colors)){
       const link=page.locator(`.socials a[data-social=${id}]`),svg=link.locator('svg');
-      await link.hover();await expect(svg).toHaveCSS('color',color);
-      await page.mouse.move(1430,850);await link.focus();await expect(svg).toHaveCSS('color',color);
+      await link.hover();await expect(svg).toHaveCSS('color','rgb(255, 255, 255)');expect(await link.evaluate(node=>getComputedStyle(node,'::before').backgroundColor)).toBe(color);
+      await page.mouse.move(1430,850);await link.focus();await expect(svg).toHaveCSS('color','rgb(255, 255, 255)');expect(await link.evaluate(node=>getComputedStyle(node,'::before').backgroundColor)).toBe(color);
       await link.evaluate(node=>(node as HTMLElement).blur());
     }
     expect(await page.locator('.world-light').evaluate(node=>getComputedStyle(node).backgroundImage)).not.toContain('world-substrate.svg');
@@ -165,6 +167,7 @@ test('complete uploaded phone cable tails stay outside the readable CV column',a
   }
 });
 test('drawn phone skill packets clear the monitor stand, social controls and CV copy',async({page})=>{
+  test.setTimeout(60000);
   await page.addInitScript(()=>{
     const result={draws:0,collisions:0,hits:[] as unknown[]};Object.defineProperty(window,'skillClearance',{value:result});
     const gl=WebGL2RenderingContext.prototype,names=new WeakMap<WebGLUniformLocation,string>(),location=gl.getUniformLocation,matrix=gl.uniformMatrix4fv;

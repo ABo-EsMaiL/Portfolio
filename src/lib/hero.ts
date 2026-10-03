@@ -1,23 +1,27 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { createIntroGate, clampProgress, journeyLayout } from './journey';
+import { authoredFaceBox, createIntroGate, clampProgress, journeyFrameHeight, journeyLayout } from './journey';
 import type { Rect } from './content';
 
 type Scene = { render(seconds:number):void;resize():void;dispose():void;info():{drawCalls:number;points:number} };
-export type SceneFactory=(host:HTMLElement,image:HTMLImageElement,params:{presence:number;aura:number;progress:number})=>Promise<Scene>;
+export type SceneFactory=(host:HTMLElement,image:HTMLImageElement,params:{presence:number;aura:number;progress:number;intro:number})=>Promise<Scene>;
 export function mountHero(root:HTMLElement,face:Rect,readyLabel:string,sceneFactory?:SceneFactory) {
   gsap.registerPlugin(ScrollTrigger);
   const stage=root.querySelector<HTMLElement>('.world-stage')!,track=root.querySelector<HTMLElement>('.journey-track')!;
   const image=root.querySelector<HTMLImageElement>('.portrait-image')!,portrait=root.querySelector<HTMLElement>('.portrait-stage')!;
   const motion=root.querySelector<HTMLElement>('.portrait-motion')!,layer=root.querySelector<HTMLElement>('.spatial-layer')!;
   const hud=Array.from(root.querySelectorAll<SVGElement>('.detection-hud'));
+  const links=root.querySelector<SVGSVGElement>('.identity-links')!,dust=root.querySelector<SVGSVGElement>('.identity-dust')!;
+  const linkPaths=Array.from(links.querySelectorAll('path')),cards=Array.from(links.querySelectorAll('rect')),motes=Array.from(dust.querySelectorAll('circle'));
   const identity=root.querySelector<HTMLElement>('.identity')!,copy=root.querySelector<HTMLElement>('.hero-copy')!;
   const actions=root.querySelector<HTMLElement>('.hero-actions')!,about=root.querySelector<HTMLElement>('.about-copy')!;
   const socials=Array.from(root.querySelectorAll<HTMLElement>('.socials li'));
   const dock=root.querySelector<HTMLElement>('.social-dock')!,monitor=root.querySelector<HTMLElement>('.monitor-fallback')!;
   const hint=root.querySelector<HTMLElement>('.gesture-hint')!,caption=root.querySelector<HTMLElement>('.scene-caption')!;
   const scan=root.querySelector<HTMLElement>('.scan-status')!,status=root.querySelector<HTMLElement>('[data-live-status]')!;
-  const reduce=matchMedia('(prefers-reduced-motion: reduce)'),params={presence:0,aura:0,progress:0},reveal={value:0};
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)'),params={presence:0,aura:0,progress:0,intro:0},reveal={value:0},contentReveal={value:0};
+  const tokens=Array.from(root.querySelectorAll<HTMLElement>('.stream-token'));
+  let copyTop=0,actionTop=0;
   let scene:Scene|undefined,intro:gsap.core.Timeline|undefined,navigation:gsap.core.Tween|undefined,loader:gsap.core.Tween|undefined;
   let disposed=false,paused=false,activeStage='Hero',enhanced=!reduce.matches;
   const context=gsap.context(()=>{},root);
@@ -25,61 +29,103 @@ export function mountHero(root:HTMLElement,face:Rect,readyLabel:string,sceneFact
   const range=()=>Math.max(1,track.offsetHeight-stage.clientHeight);
   const progress=()=>clampProgress((scrollY-root.offsetTop)/range());
 
-  const frameHeight=()=>Math.min(stage.clientHeight,Math.max(innerHeight,stage.clientWidth<768?844:900));
+  const frameHeight=()=>Math.min(stage.clientHeight,journeyFrameHeight(stage.clientWidth,innerHeight));
+  const headlineOrigin=(h:number,stacked:boolean)=>stacked?(stage.clientWidth>=640&&innerHeight<600?84:Math.max(96,Math.min(h,innerHeight)*.115)):h*.10;
   const gate=createIntroGate(phase=>{if(disposed)return;root.dataset.phase=phase;status.textContent=phase==='ready'?readyLabel:phase==='locked'?'Face located':phase==='hunting'?'Finding the engineer':'Preparing the scene';});
   function stats(){if(scene){const info=scene.info();root.dataset.drawCalls=String(info.drawCalls);root.dataset.points=String(info.points);}}
-  function box(rect=face){const layout=journeyLayout(stage.clientWidth,stage.clientHeight,0,frameHeight());return{x:layout.portrait.width*rect.x,y:layout.portrait.height*rect.y,width:layout.portrait.width*rect.width,height:layout.portrait.height*rect.height,scaleX:1,scaleY:1};}
+  function box(rect=face){const layout=journeyLayout(stage.clientWidth,stage.clientHeight,params.progress,frameHeight(),params.intro,innerHeight),anchor=authoredFaceBox(rect,layout.crop);return{x:layout.portrait.width*anchor.x,y:layout.portrait.height*anchor.y,width:layout.portrait.width*anchor.width,height:layout.portrait.height*anchor.height,scaleX:1,scaleY:1};}
+  function annotation(){
+    // Measure only at the settled reveal or resize, never on the render ticker.
+    const origin=stage.getBoundingClientRect(),faceRect=hud[0].getBoundingClientRect();
+    const faceX=faceRect.x-origin.x,faceY=faceRect.y-origin.y;
+    const rectangles=[actions,copy].map((node,i)=>{
+      const r=node.getBoundingClientRect(),x=r.x-origin.x-10,y=r.y-origin.y-10,width=r.width+20,height=r.height+20;
+      for(const [key,value] of Object.entries({x,y,width,height}))cards[i].setAttribute(key,String(value));
+      const right=x>faceX+faceRect.width/2,startX=faceX+(right?faceRect.width:0),startY=faceY+faceRect.height*.62,endX=right?x:x+width,endY=y+Math.min(height/2,48),elbow=(startX+endX)/2;
+      linkPaths[i].setAttribute('d',`M${startX} ${startY}H${elbow}V${endY}H${endX}`);
+      return{x,y,width,height};
+    });
+    rectangles.push({x:faceX,y:faceY,width:faceRect.width,height:faceRect.height});
+    motes.forEach((mote,i)=>{
+      const group=i%5,fraction=Math.floor(i/5)/32;let x:number,y:number;
+      if(group<2){const point=linkPaths[group].getPointAtLength(linkPaths[group].getTotalLength()*fraction);x=point.x;y=point.y;}
+      else{
+        const r=rectangles[group-2],distance=fraction*2*(r.width+r.height);
+        if(distance<r.width){x=r.x+distance;y=r.y;}
+        else if(distance<r.width+r.height){x=r.x+r.width;y=r.y+distance-r.width;}
+        else if(distance<r.width*2+r.height){x=r.x+r.width*2+r.height-distance;y=r.y+r.height;}
+        else{x=r.x;y=r.y+2*(r.width+r.height)-distance;}
+      }
+      mote.setAttribute('cx',String(x));mote.setAttribute('cy',String(y));
+    });
+  }
   function measure(){
     if(!enhanced)return;
     stage.style.height='';track.style.height='';
-    const h=frameHeight(),layout=journeyLayout(stage.clientWidth,stage.clientHeight,1,h);
+    const h=frameHeight(),layout=journeyLayout(stage.clientWidth,stage.clientHeight,1,h,1,innerHeight);
+    root.dataset.aboutLayout=layout.aboutStacked?'stacked':'columns';
     root.style.setProperty('--frame-height',`${h}px`);
     root.style.setProperty('--about-top',`${layout.aboutY}px`);
+    root.style.setProperty('--about-left',`${layout.aboutX}px`);root.style.setProperty('--about-width',`${layout.aboutWidth}px`);
+    for(const [name,rect] of [['copy',layout.heroCopy],['actions',layout.heroActions]] as const){
+      root.style.setProperty(`--hero-${name}-left`,`${rect.x}px`);root.style.setProperty(`--hero-${name}-top`,`${rect.y}px`);root.style.setProperty(`--hero-${name}-width`,`${rect.width}px`);
+    }
+    // A scrollbar can select compact geometry while CSS still uses the larger desktop headline.
+    const sideTop=layout.compact&&innerWidth>=1200?headlineOrigin(h,layout.stacked)+identity.offsetHeight+48:0;
+    copyTop=Math.max(layout.heroCopy.y,sideTop);
+    actionTop=layout.stacked&&!layout.compact?Math.max(layout.heroActions.y,copyTop+copy.offsetHeight+16):Math.max(layout.heroActions.y,sideTop);
+    root.style.setProperty('--hero-copy-top',`${copyTop}px`);
+    root.style.setProperty('--hero-actions-top',`${actionTop}px`);
     // Let larger phone copy be read by native scrolling after the spatial transition, not tiny type.
     const needed=Math.max(stage.clientHeight,layout.aboutY+about.offsetHeight+32);
     stage.style.height=`${Math.ceil(needed)}px`;track.style.height=`${Math.ceil(needed)+innerHeight*1.8}px`;
   }
   function renderJourney(){
     if(disposed||!enhanced)return;
-    const p=params.progress,layout=journeyLayout(stage.clientWidth,stage.clientHeight,p,frameHeight()),r=layout.portrait,crop=layout.crop,h=layout.frameHeight;
+    const p=params.progress,layout=journeyLayout(stage.clientWidth,stage.clientHeight,p,frameHeight(),params.intro,innerHeight),r=layout.portrait,crop=layout.crop,h=layout.frameHeight;
     gsap.set(portrait,{x:r.x,y:r.y,width:r.width,height:r.height});
     const fullWidth=r.width/crop.width,fullHeight=r.height/crop.height;
     gsap.set(image,{width:fullWidth,height:fullHeight,x:-crop.x*fullWidth,y:-crop.y*fullHeight});
     const aperture=layout.aperture;
     const clip=Math.max(0,r.y+r.height-layout.portraitBottom),left=Math.max(0,aperture.x-r.x),right=Math.max(0,r.x+r.width-aperture.x-aperture.width);
     motion.style.clipPath=`inset(0 ${right}px ${clip}px ${left}px)`;
-    const heroAlpha=(1-smooth(p,.1,.49))*reveal.value,aboutAlpha=smooth(p,.78,.94);
+    const heroAlpha=(1-smooth(p,.1,.49))*reveal.value,aboutAlpha=smooth(p,.78,.94),contentAlpha=(1-smooth(p,.1,.49))*(layout.stacked?reveal.value:contentReveal.value);
     const camera=layout.camera;
     const project=(x:number,y:number)=>({x:camera.x+(x-stage.clientWidth/2)*(camera.scale-1),y:camera.y+(y-stage.clientHeight/2)*(camera.scale-1),scale:camera.scale,transformOrigin:'0 0'});
     // Fade the visual headline without removing the page's sole h1 from the accessibility tree.
-    const headline=project(stage.clientWidth*.06,h*(layout.stacked?.115:.10));
+    const headlineTop=headlineOrigin(h,layout.stacked);
+    identity.style.top=`${headlineTop}px`;
+    const headline=project(stage.clientWidth*.06,headlineTop);
     headline.y-=layout.transition*h*.44;
     gsap.set(identity,{...headline,opacity:(1-smooth(p,.05,.3))*reveal.value});
     // Native alpha masking puts the live WebGL photograph above the headline without a second canvas/photo.
     identity.style.setProperty('--portrait-mask-width',`${fullWidth/camera.scale}px`);
     identity.style.setProperty('--portrait-mask-height',`${fullHeight/camera.scale}px`);
     identity.style.setProperty('--portrait-mask-x',`${(r.x-crop.x*fullWidth-(stage.clientWidth*.06+headline.x))/camera.scale}px`);
-    identity.style.setProperty('--portrait-mask-y',`${(r.y-crop.y*fullHeight-(h*(layout.stacked?.115:.10)+headline.y))/camera.scale}px`);
-    gsap.set(copy,{...project(stage.clientWidth*(layout.stacked?.04:.69),h*(layout.stacked?.715:stage.clientWidth<1200?.44:.57)),autoAlpha:heroAlpha});
-    gsap.set(actions,{...project(stage.clientWidth*(layout.stacked?0:.065),h*(layout.stacked?.825:stage.clientWidth<1200?.40:.57)),autoAlpha:heroAlpha});
-    gsap.set(about,{autoAlpha:aboutAlpha,y:(1-aboutAlpha)*24});about.inert=aboutAlpha<.95;actions.inert=heroAlpha<.95;
+    identity.style.setProperty('--portrait-mask-y',`${(r.y-crop.y*fullHeight-(headlineTop+headline.y))/camera.scale}px`);
+    gsap.set(copy,{...project(layout.heroCopy.x,copyTop),autoAlpha:contentAlpha});
+    gsap.set(actions,{...project(layout.heroActions.x,actionTop),autoAlpha:contentAlpha});
+    gsap.set(about,{autoAlpha:aboutAlpha,y:(1-aboutAlpha)*24});about.inert=aboutAlpha<.95;actions.inert=gate.state.phase!=='ready'||contentAlpha<.95;
     gsap.set(monitor,{x:layout.monitor.x,y:layout.monitor.y,width:layout.monitor.width,height:layout.monitor.height,opacity:layout.screen});
     const train=smooth(p,.24,.77);
     const socialStep=!layout.stacked&&stage.clientWidth<1200?60:68;
     socials.forEach((item,i)=>{const delay=clampProgress((train-i*.055)/(1-i*.055)),start=layout.heroSocial;
-      gsap.set(item,{x:start.x+i*socialStep+(layout.dock.x+2-start.x-i*socialStep)*delay,y:start.y+(layout.dock.y+6+i*52-start.y)*delay,autoAlpha:reveal.value});
-      item.style.setProperty('--social-icon-size',`${30-4*delay}px`);item.style.setProperty('--social-icon-inset',`${1+2*delay}px`);
-      gsap.set(item.querySelector('.social-name'),{opacity:1-train});});
+      const x=start.x+(start.vertical?0:i*socialStep),y=start.y+(start.vertical?i*52:0);
+      gsap.set(item,{x:x+(layout.dock.x+2-x)*delay,y:y+(layout.dock.y+6+i*52-y)*delay,autoAlpha:reveal.value});
+      item.style.setProperty('--social-icon-size',`${layout.stacked?24:30-4*delay}px`);item.style.setProperty('--social-icon-inset',`${layout.stacked?4:1+2*delay}px`);});
     gsap.set(dock,{x:layout.dock.x,y:layout.dock.y,opacity:smooth(p,.62,.83)});
-    gsap.set(hint,{autoAlpha:heroAlpha});gsap.set(caption,{autoAlpha:smooth(p,.62,.83)});
-    if(gate.state.phase==='ready'){gsap.set(hud,{...box(),opacity:.8*(1-smooth(p,0,.14))});gsap.set(scan,{opacity:0});}
+    gsap.set(hint,{autoAlpha:heroAlpha});gsap.set(caption,{x:layout.monitor.x+layout.monitor.width/2,y:layout.monitor.y+layout.monitor.height*1.23+32,xPercent:-50,autoAlpha:smooth(p,.62,.83)});
+    if(gate.state.phase==='locked')gsap.set(hud,box());
+    if(gate.state.phase==='ready'){gsap.set(hud,{...box(),opacity:0});gsap.set(scan,{opacity:0});}
+    else gsap.set(scan,{top:Math.min(innerHeight,stage.clientHeight)-32});
     root.dataset.progress=String(p);root.dataset.cables=String(layout.cables);
     const next=p>.57?'About':'Hero';
     if(next!==activeStage){activeStage=next;root.dataset.stage=next;window.dispatchEvent(new CustomEvent('journey:stage',{detail:next}));}
     scene?.render(gsap.ticker.time);stats();
   }
   function endpoint(){
-    reveal.value=1;params.presence=1;params.aura=1;root.dataset.loading='false';loader?.kill();
+    reveal.value=1;contentReveal.value=1;gsap.set(tokens,{opacity:1});params.presence=1;params.aura=1;params.intro=1;root.dataset.loading='false';loader?.kill();
+    root.dataset.annotation='complete';gsap.set([links,dust,...hud],{opacity:0});
     gsap.set(motion,{opacity:1,scale:1});gate.ready();root.dataset.handoffs=String(gate.state.handoffs);
     if(enhanced){params.progress=progress();renderJourney();}else{about.inert=false;actions.inert=false;}
   }
@@ -97,14 +143,15 @@ export function mountHero(root:HTMLElement,face:Rect,readyLabel:string,sceneFact
     if(!link||!target||!enhanced)return;
     event.preventDefault();interrupt();navigation?.kill();
     const position={y:scrollY},y=root.offsetTop+(target.id==='about'?range():0);
-    navigation=gsap.to(position,{y,duration:.9,ease:'power2.inOut',onUpdate:()=>window.scrollTo(0,position.y),onComplete:()=>{history.replaceState(null,'',link.hash);target.focus({preventScroll:true});}});
+    const duration=Math.max(.6,Math.min(2.4,Math.abs(y-position.y)/range()*2.4));
+    navigation=gsap.to(position,{y,duration,ease:'sine.inOut',onUpdate:()=>window.scrollTo(0,position.y),onComplete:()=>{history.replaceState(null,'',link.hash);target.focus({preventScroll:true});}});
   }
   function tick(seconds:number){scene?.render(seconds);}
   function visibility(){if(document.hidden){gsap.ticker.remove(tick);if(intro?.isActive()){paused=true;intro.pause();}}else{if(scene)gsap.ticker.add(tick);if(paused&&gate.state.phase!=='ready'){intro?.resume();paused=false;}}}
-  function resize(){measure();scene?.resize();if(gate.state.phase==='ready')renderJourney();else if(enhanced){renderJourney();if(gate.state.phase==='locked')gsap.set(hud,box());}}
+  function resize(){measure();scene?.resize();if(intro?.isActive()&&stage.clientWidth<1200&&root.dataset.annotation){interrupt();return;}if(gate.state.phase==='ready')renderJourney();else if(enhanced){renderJourney();if(gate.state.phase==='locked')gsap.set(hud,box());if(root.dataset.annotation==='linked'||root.dataset.annotation==='holding')annotation();}}
   function lost(){root.dataset.webgl='false';root.dataset.drawCalls='0';root.dataset.points='0';gsap.ticker.remove(tick);scene?.dispose();scene=undefined;}
   function preference(){if(!reduce.matches)return;intro?.kill();navigation?.kill();loader?.kill();lost();enhanced=false;trigger.kill();context.revert();root.classList.remove('is-enhanced');
-    gsap.set([stage,track,image,motion,portrait,identity,copy,actions,about,monitor,hint,caption,dock,scan,...hud,...socials,...root.querySelectorAll('.social-name')],{clearProps:'all'});endpoint();}
+    gsap.set([stage,track,image,motion,portrait,identity,copy,actions,about,monitor,hint,caption,dock,scan,links,dust,...motes,...hud,...socials,...tokens],{clearProps:'all'});endpoint();}
   root.dataset.phase='loading';root.dataset.webgl='false';root.dataset.progress='0';root.dataset.stage='Hero';root.dataset.bound='true';
   if(enhanced){root.classList.add('is-enhanced');about.inert=true;measure();renderJourney();gsap.set(motion,{opacity:.15});}
   const trigger=ScrollTrigger.create({start:()=>root.offsetTop,end:()=>root.offsetTop+range(),onUpdate:self=>{params.progress=self.progress;if(gate.state.phase!=='ready'&&self.progress>0)interrupt();renderJourney();}});
@@ -117,6 +164,8 @@ export function mountHero(root:HTMLElement,face:Rect,readyLabel:string,sceneFact
     if(!enhanced||scrollY>0||location.hash||gate.state.phase==='ready')endpoint();
     else if(gate.state.phase==='loading')context.add(()=>{
       gsap.set(hud,{opacity:0});
+      const annotations=stage.clientWidth>=1200;
+      gsap.set(tokens,{opacity:annotations?0:1});
       const hunts=[{x:.14,y:.3,width:.32,height:.18},{x:.48,y:.2,width:.32,height:.24},{x:.27,y:.38,width:.46,height:.2}];
       hud.forEach((frame,i)=>gsap.set(frame,box(hunts[i])));
       intro=gsap.timeline({onComplete:endpoint})
@@ -128,9 +177,26 @@ export function mountHero(root:HTMLElement,face:Rect,readyLabel:string,sceneFact
       hud.forEach((frame,i)=>{intro!.to(frame,{...box(hunts[(i+1)%3]),duration:.6,ease:'power1.inOut'},.75+i*.12).to(frame,{...box(),duration:.6,ease:'power2.inOut'},1.45+i*.06);});
       intro.call(()=>{gate.advance('locked');scan.textContent='Identity found';},[],2.17)
         .to(hud,{color:'#258064',filter:'drop-shadow(0 0 5px rgba(255,255,255,.9))',opacity:1,duration:.15},2.17)
-        .to(reveal,{value:1,duration:.55,onUpdate:renderJourney,ease:'power2.out'},2.22)
-        .to(hud,{opacity:.6,duration:.4},2.55)
-        .to(scan,{opacity:0,duration:.3},2.8);
+        .to(params,{intro:1,duration:.85,onUpdate:renderJourney,ease:'sine.inOut'},2.32)
+        .to(reveal,{value:1,duration:.55,onUpdate:renderJourney,ease:'power2.out'},2.8)
+        .to(scan,{opacity:0,duration:.3},3.2);
+      if(annotations){
+        intro.call(()=>{contentReveal.value=1;renderJourney();annotation();root.dataset.annotation='linked';},[],3.35)
+          .to(links,{opacity:1,duration:.2,ease:'power2.out'},3.35);
+        let streamEnd=3.6;
+        for(const node of [actions,copy]){
+          const words=Array.from(node.querySelectorAll('.stream-token'));
+          intro.to(words,{opacity:1,duration:.12,stagger:.035,ease:'none'},3.6);
+          streamEnd=Math.max(streamEnd,3.6+.12+Math.max(0,words.length-1)*.035);
+        }
+        const dissolve=streamEnd+1.6;
+        intro.call(()=>{root.dataset.annotation='holding';},[],streamEnd)
+          .call(()=>{root.dataset.annotation='dust';},[],dissolve)
+          .set(dust,{opacity:1},dissolve)
+          .to([links,...hud],{clipPath:'inset(0 0 0 100%)',opacity:0,duration:.65,ease:'power2.out'},dissolve)
+          .fromTo(motes,{x:0,y:0,opacity:.8},{x:i=>18+(i*37%76),y:i=>-20-(i*23%68),opacity:0,duration:.65,stagger:.002,ease:'power2.out'},dissolve)
+          .set(dust,{opacity:0},dissolve+.97);
+      }else intro.to(hud,{opacity:0,duration:.3,ease:'power2.out'},3.35);
       if(document.hidden){paused=true;intro.pause();}
     });
     if(sceneFactory&&enhanced&&!root.dataset.imageFailed){void sceneFactory(layer,image,params).then(created=>{if(disposed||!enhanced){created.dispose();return;}scene=created;scene.render(gsap.ticker.time);root.dataset.webgl='true';stats();if(!document.hidden)gsap.ticker.add(tick);}).catch(lost);}

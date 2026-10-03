@@ -1,10 +1,10 @@
 import * as THREE from 'three';
 import manifest from '../../public/assets/portrait-manifest.json';
 import { createEmbeddingCloud } from './embedding';
-import { journeyLayout } from './journey';
+import { journeyFrameHeight, journeyLayout } from './journey';
 import heroUi from '../../content/hero-ui.json';
 
-export type SceneParams = { presence: number; aura: number; progress: number };
+export type SceneParams = { presence: number; aura: number; progress: number; intro?: number };
 const TEXTURE_URL = '/assets/portrait-scene-960.webp';
 const clamp = (value: number) => Number.isFinite(value) ? Math.max(0, Math.min(1, value)) : 0;
 
@@ -219,10 +219,11 @@ export async function createSpatialScene(host: HTMLElement, image: HTMLImageElem
     const lineMaterial=own(new THREE.LineBasicMaterial({color:mint,transparent:true,opacity:0,depthWrite:false}));
     const links=new THREE.LineSegments(lineGeometry,lineMaterial);
     const cloud=new THREE.Group();cloud.add(points,links);scene.add(cloud);
-    let width = 1, height = 1, lastProgress = -1;
+    let width = 1, height = 1, lastProgress = -1, lastIntro = -1;
     let layout = journeyLayout(width, height, 0);
     function registerLayout(progress: number) {
-      layout = journeyLayout(width, height, progress,Math.max(innerHeight,width<768?844:900)); lastProgress = progress;
+      lastIntro=clamp(params.intro??1);
+      layout = journeyLayout(width, height, progress,journeyFrameHeight(width,innerHeight),lastIntro,innerHeight); lastProgress = progress;
       const p = layout.portrait, m = layout.monitor, crop = layout.crop;
       const uv = plane.getAttribute('uv');
       // TextureLoader flips Y; shared source rectangles have a top-left origin.
@@ -245,7 +246,7 @@ export async function createSpatialScene(host: HTMLElement, image: HTMLImageElem
       foot.position.set(0, -m.height * .71, 0); foot.rotation.x = .12;
       indicator.scale.setScalar(Math.max(1, m.width * .0025)); indicator.position.set(m.width * .43, -m.height * .488, 27);
       cableGroup.position.copy(monitor.position); cableGroup.scale.setScalar(m.width);
-      const badge=layout.mobile?52:60;
+      const badge=layout.aboutStacked?52:60;
       packets.forEach(({mesh})=>mesh.scale.set(badge/m.width,badge*4/3/m.width,1));
       binaryPulses.forEach(({mesh})=>mesh.scale.set(14/m.width,14/m.width,1));
       cloud.position.set(portrait.position.x,height/2-p.y-p.width*.3,4); cloud.scale.set(p.width*1.45,p.width*1.45,2);
@@ -254,7 +255,7 @@ export async function createSpatialScene(host: HTMLElement, image: HTMLImageElem
     function resize() {
       if (disposed) return;
       width = Math.max(1, host.clientWidth); height = Math.max(1, host.clientHeight);
-      const mobile = width < 768;
+      const mobile = width < 768,feedStacked=width<1200;
       const dpr = Math.min(window.devicePixelRatio || 1, mobile ? 1.25 : 1.5);
       renderer.setPixelRatio(dpr);
       renderer.setSize(width, height, false);
@@ -264,7 +265,7 @@ export async function createSpatialScene(host: HTMLElement, image: HTMLImageElem
       geometry.setDrawRange(0, mobile ? 450 : 1200);
       lineGeometry.setDrawRange(0,mobile ? Math.floor(segments.length/6*.4)*2 : segments.length/3);
       registerLayout(clamp(params.progress));
-      const m = journeyLayout(width,height,1,Math.max(innerHeight,mobile?844:900)).monitor, halfHeight = m.height / m.width / 2;
+      const m = journeyLayout(width,height,1,journeyFrameHeight(width,innerHeight)).monitor, halfHeight = m.height / m.width / 2;
       // Existing paths extend beyond this review into the next viewport; no next section is implemented.
       const reach = (height+Math.max(innerHeight*.8,500)-m.y-m.height)/m.width;
       for (let i = 0; i < cables.length; i++) {
@@ -281,7 +282,7 @@ export async function createSpatialScene(host: HTMLElement, image: HTMLImageElem
           socket.scale.set(.026, .032, .035);
         }
         path.curves=[curve];
-        if(mobile){
+        if(feedStacked){
           // Visible ingress occupies the skill strip; complete tails skirt the larger CV copy.
           const port=i===0?-.34:i===1?-.17:.29,edge=(width*(i===0?.015:i===1?.03:.985)-(m.x+m.width/2))/m.width;
           // Phone outlets live under the bezel: a side outlet would push its entire skill feed off-screen.
@@ -303,7 +304,7 @@ export async function createSpatialScene(host: HTMLElement, image: HTMLImageElem
     function render(seconds: number) {
       if (disposed) return;
       const presence = clamp(params.presence), aura = clamp(params.aura) * presence;
-      const progress = clamp(params.progress); if (progress !== lastProgress) registerLayout(progress);
+      const progress = clamp(params.progress); if (progress !== lastProgress || clamp(params.intro??1) !== lastIntro) registerLayout(progress);
       portraitMaterial.opacity = presence;
       portrait.visible = presence > 0;
       const screenPresence = presence * layout.screen, cablePresence = presence * layout.cables;
@@ -328,12 +329,12 @@ export async function createSpatialScene(host: HTMLElement, image: HTMLImageElem
       }
       for (let i = 0; i < packets.length; i++) {
         const packet = packets[i], entry = .09 * layout.cables;
-        const cycle = time * (layout.mobile ? .17 : .105);
-        const u = (1 - ((cycle + (layout.mobile ? 0 : packet.phase)) % 1)) * layout.cables - entry;
-        const tile = packet.mesh, cable = cables[packet.cable],curve=layout.mobile?cable.curve:cable.path;
-        const maps=skillMaps[packet.cable],index=(Math.floor(cycle+(layout.mobile?0:packet.phase))*3+packet.slot)%maps.length;
+        const cycle = time * (layout.aboutStacked ? .17 : .105);
+        const u = (1 - ((cycle + (layout.aboutStacked ? 0 : packet.phase)) % 1)) * layout.cables - entry;
+        const tile = packet.mesh, cable = cables[packet.cable],curve=layout.aboutStacked?cable.curve:cable.path;
+        const maps=skillMaps[packet.cable],index=(Math.floor(cycle+(layout.aboutStacked?0:packet.phase))*3+packet.slot)%maps.length;
         tile.material.map=maps[index];
-        tile.visible = cablePresence > .02 && (!layout.mobile || Math.floor(cycle) % 3 === Math.round(packet.phase * 3));
+        tile.visible = cablePresence > .02 && (!layout.aboutStacked || Math.floor(cycle) % 3 === Math.round(packet.phase * 3));
         if (u >= 0) curve.getPointAt(u, tile.position);
         else {
           // Pass under the front bezel into the screen, then fade instead of stopping at the plug.
@@ -342,7 +343,7 @@ export async function createSpatialScene(host: HTMLElement, image: HTMLImageElem
           else tile.position.y -= u;
         }
         tile.position.z += .027;
-        if(layout.mobile){
+        if(layout.aboutStacked){
           const halfWidth=26,halfHeight=52*2/3;
           const x=width/2+monitor.position.x+tile.position.x*layout.monitor.width;
           const y=height/2-monitor.position.y-tile.position.y*layout.monitor.width;

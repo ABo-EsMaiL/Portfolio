@@ -1,6 +1,6 @@
 # Portfolio Milestone Roadmap
 
-**Status:** Milestone 1 approved; Milestone 2 in progress. The owner now authorizes a combined unmerged Hero → About review prototype; see `../docs/owner-narrative-alignment.md`. This exception does not approve a milestone merge or later stages.
+**Status:** The owner accepts the actual refined Hero → About, authorizes saving and merging/pushing the current feature branch to `main`, and requests the next connected scene on a separate branch. Both background choices are deferred until the end. See `../docs/hero-about-owner-approval.md`; older unmerged-review restrictions below are historical. Physical-device/performance gaps remain disclosed, not certified by acceptance.
 **Task-list target:** `todo.md`; official feature entry point: `../specs/001-cinematic-identity/tasks.md`.
 
 ## Capability and dependency map
@@ -26,6 +26,12 @@ Motion consumes content/layout measurements; content does not depend on motion. 
 | 7 | `feature/projects-contact` | whole-world contraction and reversible Contact | contact behavior and destinations approved |
 
 Admin is required, not skipped: schedule its own spec/branch after provider/editing scope are decided and before production launch. Each milestone branches from approved main only after the prior reviewed work merges; do not build later scenes speculatively on stacked unapproved branches.
+
+### Owner-requested recovery and visual study
+
+The owner requests a recovery checkpoint and a concrete engineering-world proposal before further integration. Freeze `checkpoint/hero-about-accepted-base` at `ad37b55`; keep review work isolated on `feature/engineering-world-study`. This local stacked study is not a formal milestone merge or authorization to ship a Skills stage. Scope/spec/storyboard and dashboard-readiness findings: `../docs/engineering-world-direction.md`. The independent live study keeps the production composition unchanged; only the explicit guided-navigation speed correction changes the app now. Tasks W001-W004 in `todo.md` track this extension without closing older owner/performance gates.
+
+The dashboard plan must unify editable profile/Hero/About/skills/social/project records behind a versioned validated snapshot and approved media references. Derive rendering, captions, icon choice and responsive layout from those records. Review the current six-social schema limit, fixed four-contact geometry, fixed-ID icon branches and split Hero UI content before claiming add-item readiness. Overflow handling and bounded GPU packet counts are acceptance criteria, not reasons to hide extra content. No speculative CMS/database/auth scaffolding now.
 
 ### Current combined-review exception
 
