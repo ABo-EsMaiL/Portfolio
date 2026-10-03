@@ -1,0 +1,83 @@
+{
+  "kind": "Diagnostic only: trivial changing 640x640 Canvas2D, no GSAP/Three/portfolio CSS. Headless same Edge/host/trace categories; 12s per run, first 6s excluded; no scrolling or GPU query instrumentation. Not the acceptance protocol or a matched app A/B.",
+  "runs": [
+    {
+      "tier": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "run": 1,
+      "rafP95Ms": 17.100000000000364,
+      "traceP95Ms": 17.407,
+      "traceIntervals": 362,
+      "trace": ".tools/review/platform-baseline/desktop-1.trace.json.gz"
+    },
+    {
+      "tier": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "run": 2,
+      "rafP95Ms": 17.100000000000364,
+      "traceP95Ms": 17.272,
+      "traceIntervals": 359,
+      "trace": ".tools/review/platform-baseline/desktop-2.trace.json.gz"
+    },
+    {
+      "tier": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "run": 3,
+      "rafP95Ms": 17.100000000000364,
+      "traceP95Ms": 17.254,
+      "traceIntervals": 359,
+      "trace": ".tools/review/platform-baseline/desktop-3.trace.json.gz"
+    },
+    {
+      "tier": {
+        "name": "mobile-emulation",
+        "width": 390,
+        "height": 844,
+        "dpr": 3
+      },
+      "run": 1,
+      "rafP95Ms": 17.100000000000364,
+      "traceP95Ms": 17.387,
+      "traceIntervals": 360,
+      "trace": ".tools/review/platform-baseline/mobile-emulation-1.trace.json.gz"
+    },
+    {
+      "tier": {
+        "name": "mobile-emulation",
+        "width": 390,
+        "height": 844,
+        "dpr": 3
+      },
+      "run": 2,
+      "rafP95Ms": 17.19999999999891,
+      "traceP95Ms": 17.255,
+      "traceIntervals": 360,
+      "trace": ".tools/review/platform-baseline/mobile-emulation-2.trace.json.gz"
+    },
+    {
+      "tier": {
+        "name": "mobile-emulation",
+        "width": 390,
+        "height": 844,
+        "dpr": 3
+      },
+      "run": 3,
+      "rafP95Ms": 17.100000000000364,
+      "traceP95Ms": 17.304,
+      "traceIntervals": 361,
+      "trace": ".tools/review/platform-baseline/mobile-emulation-3.trace.json.gz"
+    }
+  ]
+}

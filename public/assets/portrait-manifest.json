@@ -1,0 +1,285 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "path": "Picsart_26-07-31_23-36-42-453.jpg.jpeg",
+    "sha256": "b7d08c04b6759e21e6f58df44069329584ed4c826891066f7473fe800add15e4",
+    "width": 3072,
+    "height": 4096,
+    "exifOrientation": 1
+  },
+  "coordinateSystem": "Top-left origin; x/width normalized by original 3072; y/height by original 4096. Rectangles are not inferred ML measurements.",
+  "anchors": {
+    "faceBox": {
+      "x": 0.3984375,
+      "y": 0.0478515625,
+      "width": 0.20572916666666666,
+      "height": 0.1962890625
+    },
+    "heroCrop": {
+      "x": 0.1875,
+      "y": 0.01171875,
+      "width": 0.625,
+      "height": 0.46875
+    },
+    "aboutCrop": {
+      "x": 0.1875,
+      "y": 0.01171875,
+      "width": 0.625,
+      "height": 0.890625
+    }
+  },
+  "sourcePixelRects": {
+    "faceBox": {
+      "x": 1224,
+      "y": 196,
+      "width": 632,
+      "height": 804
+    },
+    "heroCrop": {
+      "x": 576,
+      "y": 48,
+      "width": 1920,
+      "height": 1920
+    },
+    "aboutCrop": {
+      "x": 576,
+      "y": 48,
+      "width": 1920,
+      "height": 3648
+    }
+  },
+  "heroFaceBox": {
+    "x": 0.3375,
+    "y": 0.07708333333333334,
+    "width": 0.32916666666666666,
+    "height": 0.41875
+  },
+  "measurement": {
+    "method": "Manual visual inspection of original, 100% head region and source-coordinate overlay; editorial crops checked against complete matted silhouette.",
+    "faceDefinition": "Forehead skin to chin, including ears; excludes top hair. Approximate manual boundaries, not biometric detection.",
+    "precision": "Integer source-pixel authored rectangles; manual visual approximation, no quantified detection accuracy. Normalized values are exact transforms of these rectangles.",
+    "anchorOverlay": "tmp/portrait-source-anchors.png",
+    "aboutCropStatus": "Measured wider source window for future About; not owner-approved choreography."
+  },
+  "derivatives": [
+    {
+      "path": "assets/portrait-source-cutout.webp",
+      "publicUrl": "/assets/portrait-source-cutout.webp",
+      "role": "source-aligned-lossless-rgba",
+      "width": 3072,
+      "height": 4096,
+      "bytes": 2906494,
+      "sha256": "f04ba500b4e69538b5c66d0d651bfc962481bc8f3e56061d7f69fbcdb57a44af"
+    },
+    {
+      "path": "assets/portrait-source-mask.png",
+      "publicUrl": "/assets/portrait-source-mask.png",
+      "role": "source-aligned-alpha",
+      "width": 3072,
+      "height": 4096,
+      "bytes": 129228,
+      "sha256": "8fdd25803671b0029dabf346cead888b01250765721afdac52c1239ce454dbe8"
+    },
+    {
+      "path": "assets/portrait-hero-640.webp",
+      "publicUrl": "/assets/portrait-hero-640.webp",
+      "role": "hero",
+      "width": 640,
+      "height": 640,
+      "bytes": 29646,
+      "sha256": "3bfa38e10478df3a17c67c514250a21544c5fa56c7b4f764700b1c6502605ae0",
+      "quality": 92,
+      "alphaLossless": true,
+      "within250KiB": true
+    },
+    {
+      "path": "assets/portrait-hero-960.webp",
+      "publicUrl": "/assets/portrait-hero-960.webp",
+      "role": "hero",
+      "width": 960,
+      "height": 960,
+      "bytes": 49826,
+      "sha256": "ec1242c168aac5e268f5ad84a1d5a6d91d6bb883e755401240b08a739eeb3dc1",
+      "quality": 92,
+      "alphaLossless": true,
+      "within250KiB": true
+    },
+    {
+      "path": "assets/portrait-hero-1280.webp",
+      "publicUrl": "/assets/portrait-hero-1280.webp",
+      "role": "hero",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 75248,
+      "sha256": "c624a76b510cbd3fda080f52d71838bb1743749a08eff4901e1cb39746709734",
+      "quality": 92,
+      "alphaLossless": true,
+      "within250KiB": true
+    },
+    {
+      "path": "assets/portrait-scene-960.webp",
+      "publicUrl": "/assets/portrait-scene-960.webp",
+      "role": "scene-source-aligned",
+      "width": 960,
+      "height": 1280,
+      "bytes": 60914,
+      "sha256": "309f61b960f804de3acc04f36293a1567284bb0143d80285d263aa13a12bed62",
+      "quality": 92,
+      "alphaLossless": true,
+      "within250KiB": true
+    }
+  ],
+  "matting": {
+    "model": "isnet-general-use",
+    "provider": "CPUExecutionProvider",
+    "inferenceInput": [
+      1024,
+      1024
+    ],
+    "refinement": "PyMatting closed-form alpha and multilevel foreground estimation at original pixel resolution",
+    "foregroundThreshold": 240,
+    "backgroundThreshold": 10,
+    "erodeSize": 6,
+    "sourceWindow": [
+      606,
+      0,
+      3072,
+      4096
+    ],
+    "opaqueRgb": "Original decoded JPEG RGB restored wherever refined alpha == 255, except the bounded outer hair-edge despill region. Face/skin interiors are unchanged.",
+    "hairEdgeDespill": {
+      "method": "Green/blue excess-channel suppression with smooth distance fade; red detail and alpha untouched",
+      "sourceBounds": [
+        1176,
+        80,
+        1888,
+        552
+      ],
+      "edgeBandPixels": 16,
+      "greenCeiling": "R+4",
+      "blueCeiling": "R+8",
+      "changedRgbPixels": 18100,
+      "trigger": "Outer dark hair with G > R+4 and B > R+4; max channel <160"
+    },
+    "alphaBoundsSourcePixels": [
+      636,
+      98,
+      2402,
+      4096
+    ],
+    "manualMaskEdits": [],
+    "generativeReplacement": false,
+    "imageUploaded": false
+  },
+  "provenance": {
+    "python": "3.12.13",
+    "packages": {
+      "rembg": "2.0.85",
+      "onnxruntime": "1.30.0",
+      "Pillow": "12.3.0",
+      "numpy": "2.5.3",
+      "pymatting": "1.1.16",
+      "scipy": "1.18.1"
+    },
+    "modelPath": ".tools/models/models/isnet-general-use/isnet-general-use.onnx",
+    "modelSha256": "60920e99c45464f2ba57bee2ad08c919a52bbf852739e96947fbb4358c0d964a",
+    "modelBytes": 178648008,
+    "modelDownloadUrl": "https://github.com/danielgatis/rembg/releases/download/v0.0.0/isnet-general-use.onnx",
+    "modelUpstream": "https://github.com/xuebinqin/DIS",
+    "licenses": {
+      "rembg": "MIT",
+      "onnxruntime": "MIT",
+      "Pillow": "MIT-CMU",
+      "pymatting": "MIT",
+      "modelUpstreamRepository": "Apache-2.0; upstream README explicitly covers code/evaluation metric; no separate checkpoint grant stated.",
+      "modelLicenseEvidence": "https://github.com/xuebinqin/DIS/blob/main/LICENSE.md",
+      "modelLicenseScopeEvidence": "https://github.com/xuebinqin/DIS#license",
+      "sourcePortrait": "Owner-provided input; no redistribution license inferred."
+    }
+  },
+  "textureMapping": {
+    "cutout": "/assets/portrait-source-cutout.webp",
+    "mask": "/assets/portrait-source-mask.png",
+    "sceneTexture": "/assets/portrait-scene-960.webp",
+    "sourceFrame": {
+      "width": 3072,
+      "height": 4096
+    },
+    "heroFallback": "/assets/portrait-hero-960.webp",
+    "heroSrcSet": "/assets/portrait-hero-640.webp 640w, /assets/portrait-hero-960.webp 960w, /assets/portrait-hero-1280.webp 1280w",
+    "cropTransform": "cropX=(sourceX-crop.x)/crop.width; cropY=(sourceY-crop.y)/crop.height; top-left UV; invert Y only for bottom-left shader UVs.",
+    "identity": "All assets derive from the same source-aligned cutout; About can widen source UVs without replacing identity."
+  },
+  "review": {
+    "artifact": "docs/portrait-matte-review.png",
+    "edgeTilesScale": "100% / 1:1 source pixels",
+    "backgrounds": [
+      "dark #090c12",
+      "white #ffffff",
+      "checker #dddddd/#999999"
+    ],
+    "edgeRegionsSourcePixels": {
+      "hair apex": [
+        1328,
+        80,
+        1808,
+        400
+      ],
+      "left ear / temple": [
+        1136,
+        440,
+        1616,
+        888
+      ],
+      "right ear / temple": [
+        1664,
+        440,
+        2144,
+        888
+      ],
+      "left shoulder": [
+        664,
+        1080,
+        1144,
+        1528
+      ],
+      "right shoulder": [
+        2032,
+        1080,
+        2512,
+        1528
+      ],
+      "collar / white shirt": [
+        1296,
+        944,
+        1776,
+        1392
+      ],
+      "left cuff / hand": [
+        792,
+        2856,
+        1272,
+        3304
+      ],
+      "right cuff / hand": [
+        1784,
+        3160,
+        2264,
+        3608
+      ],
+      "trouser gap": [
+        1456,
+        3440,
+        1936,
+        3888
+      ]
+    },
+    "ownerVisualApproval": false,
+    "limitations": [
+      "Original ends at thighs; no pixels generated below original frame.",
+      "Original RGB contains photographic green reflections; soft-edge spill is unmixed without global face recoloring.",
+      "Very fine hair was already softened in original JPEG; matting cannot reconstruct missing strands.",
+      "Manual anchors are authored HUD/crop geometry, not measured biometric confidence."
+    ]
+  }
+}

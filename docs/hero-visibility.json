@@ -1,0 +1,10 @@
+{
+  "status": "FAIL",
+  "error": "CDP timeout Runtime.evaluate",
+  "states": [
+    {
+      "label": "protocol-smoke",
+      "value": 1
+    }
+  ]
+}

@@ -20,7 +20,7 @@
   },
   "hero": {
     "heading": {
-      "en": "Ahmed Esmail"
+      "en": "Your ideas Built with AI"
     },
     "subtitle": {
       "en": "AI & Machine Learning Engineer"
@@ -40,7 +40,7 @@
       "en": "The engineer behind the systems"
     },
     "bio": {
-      "en": "I build end-to-end AI pipelines across computer vision, natural language processing and generative AI—from model development to APIs and containerized deployment."
+      "en": "Results-driven AI & Machine Learning Engineer with a solid foundation in Computer Vision, NLP, and Deep Learning architectures. Proven ability to architect end-to-end AI pipelines, from training custom models to deploying production-ready RESTful APIs using FastAPI and Docker. Adept at bridging traditional Machine Learning with modern Generative AI, leveraging tools like LangChain and LangGraph to build stateful, multi-agent workflows. Passionate about solving complex business challenges through scalable, data-driven solutions and continuous technical growth."
     },
     "capabilityStatements": [
       {
@@ -63,10 +63,25 @@
     "alt": {
       "en": "Portrait of Ahmed Esmail"
     },
-    "cutout": null,
-    "heroCrop": null,
-    "aboutCrop": null,
-    "faceBox": null
+    "cutout": "assets/portrait-source-cutout.webp",
+    "heroCrop": {
+      "x": 0.1875,
+      "y": 0.01171875,
+      "width": 0.625,
+      "height": 0.46875
+    },
+    "aboutCrop": {
+      "x": 0.1875,
+      "y": 0.01171875,
+      "width": 0.625,
+      "height": 0.890625
+    },
+    "faceBox": {
+      "x": 0.3984375,
+      "y": 0.0478515625,
+      "width": 0.20572916666666666,
+      "height": 0.1962890625
+    }
   },
   "socials": [
     {
@@ -84,6 +99,14 @@
         "en": "GitHub"
       },
       "url": "https://github.com/ABo-EsMail"
+    },
+    {
+      "id": "facebook",
+      "kind": "other",
+      "label": {
+        "en": "Facebook"
+      },
+      "url": "https://www.facebook.com/AhmedAbdElHady222/"
     },
     {
       "id": "email",

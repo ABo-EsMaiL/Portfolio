@@ -1,6 +1,6 @@
 # Portfolio Milestone Roadmap
 
-**Status:** Spec package prepared for sign-off; this is not implementation authorization.
+**Status:** Milestone 1 approved; Milestone 2 in progress. The owner now authorizes a combined unmerged Hero → About review prototype; see `../docs/owner-narrative-alignment.md`. This exception does not approve a milestone merge or later stages.
 **Task-list target:** `todo.md`; official feature entry point: `../specs/001-cinematic-identity/tasks.md`.
 
 ## Capability and dependency map
@@ -26,6 +26,10 @@ Motion consumes content/layout measurements; content does not depend on motion. 
 | 7 | `feature/projects-contact` | whole-world contraction and reversible Contact | contact behavior and destinations approved |
 
 Admin is required, not skipped: schedule its own spec/branch after provider/editing scope are decided and before production launch. Each milestone branches from approved main only after the prior reviewed work merges; do not build later scenes speculatively on stacked unapproved branches.
+
+### Current combined-review exception
+
+The owner explicitly wants to judge continuity, not an isolated Hero still. The next review slice may include resource-aware entrance, three-frame lock with direct identity reveal, monitor pop-out, independent top capsule, left social docking and the start of skill cables. Use the proposed vertical slices and verification in `../docs/owner-narrative-alignment.md`. The milestone table remains the formal merge roadmap; no prior rejected Hero is considered approved and no automatic merge is implied. Detailed task acceptance must be reconciled with the new narrative before application changes.
 
 ## Architectural decisions
 Native scroll + ScrollTrigger gives one story progress authority; intro is separate and killed before shared target handoff. Direct Three.js supplies spatial layers, semantic DOM supplies copy/controls. Locale/copy and authored motion are separate. Existing raw image is unchanged; processed assets are Milestone 2 work. Exact stack versions and numeric budgets are proposals in the feature plan.

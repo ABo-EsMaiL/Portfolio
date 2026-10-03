@@ -1,0 +1,81 @@
+{
+  "capturedAt": "2026-10-01T10:55:36.714Z",
+  "buildId": "ICEVWlvNyjlB3M6YxD1Tl",
+  "sourceFiles": [
+    "src/app/globals.css",
+    "src/app/page.tsx",
+    "src/components/Navigation.tsx",
+    "src/lib/scene.ts",
+    "src/lib/hero.ts"
+  ],
+  "sourceSha256": "2a0442fce5bf05cfa5462de8137b53b5d15f38e705bd3d7b773d4fce81ebbc3b",
+  "method": "Installed Edge production browser screenshots; no traces or explicit CDP tests",
+  "renders": [
+    {
+      "width": 1440,
+      "overflow": false,
+      "webgl": "true",
+      "ctaY": 564.125,
+      "capsule": "blur(24px)",
+      "details": 0,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "webgl": "true",
+      "ctaY": 637.3125,
+      "capsule": "blur(24px)",
+      "details": 0,
+      "errors": []
+    },
+    {
+      "width": 320,
+      "overflow": false,
+      "webgl": "true",
+      "ctaY": 567.59375,
+      "capsule": "blur(24px)",
+      "details": 0,
+      "errors": []
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "webgl": "true",
+      "ctaY": 500.46875,
+      "capsule": "blur(24px)",
+      "details": 0,
+      "errors": []
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/hero-redesign-1440.png",
+      "sha256": "6d5f864999f66c49d38cff73679e1ab2d12007ba22e64b5220f20c13f498a038"
+    },
+    {
+      "path": "docs/hero-redesign-390.png",
+      "sha256": "5c2be63f9cc9eab933a9225a64fd174106cb4db36922cff10a646602285ad4a4"
+    },
+    {
+      "path": "docs/hero-redesign-320.png",
+      "sha256": "455864677b7cdeb62f67048b4bf8921aca0da29c4f3fef32cc65191782064983"
+    },
+    {
+      "path": "docs/hero-redesign-768.png",
+      "sha256": "0313832c6c3b085313f0e4e4ac8a45dc286853f71b4ef293d25f51646204fda7"
+    },
+    {
+      "path": "docs/hero-redesign-parallax.png",
+      "sha256": "5ef9e87461030145ff1afacf6a78fc878c23415fea150f039788472fc0b7a00e"
+    },
+    {
+      "path": "docs/hero-redesign-cta-hover.png",
+      "sha256": "4fc0ede06879468e6154e2d681103c9a933519dd0f12f34e7e398299919f414b"
+    },
+    {
+      "path": "docs/hero-redesign-hunting.png",
+      "sha256": "8efc11bcded0e942022041454ec8de2ca5bf050518962395ba726d2c3e29fda6"
+    }
+  ]
+}

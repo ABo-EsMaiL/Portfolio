@@ -166,7 +166,9 @@ def main():
             assert current == baseline, filename
     assert EXAMPLE['portrait']['sha256'] == lock['sourceSha256'][EXAMPLE['portrait']['source']]
     branch = git('branch', '--show-current').decode().strip()
-    assert branch == ('feature/hero-section' if hero_mode else 'feature/spec-kit-setup')
+    assert branch in ({'feature/hero-section', 'feature/hero-about-transition'} if hero_mode else {'feature/spec-kit-setup'})
+    if branch == 'feature/hero-about-transition':
+        assert (ROOT / 'docs/owner-narrative-alignment.md').is_file(), 'Combined review authorization must be recorded'
     if hero_mode:
         git('merge-base', '--is-ancestor', lock['gitBaseline'], 'main')
         git('merge-base', '--is-ancestor', 'milestone-1^{}', 'main')

@@ -1,0 +1,730 @@
+{
+  "recordedAt": "2026-10-01T04:51:43.398Z",
+  "browserVersion": "154.0.4258.37",
+  "buildId": "G55UkO6G7OUM1OEaJns86",
+  "buildSourceSha256": "db914943a1b67c916769f450fe7b5456f8bce574df683a9e8090fbcdc1574d3b",
+  "browser": "installed Edge, headless, unthrottled loopback; fresh contexts/cache disabled; no RUM, no real phone",
+  "hardware": {
+    "gpu": [
+      {
+        "Name": "NVIDIA GeForce GTX 1650",
+        "DriverVersion": "32.0.16.1714",
+        "CurrentRefreshRate": 60
+      }
+    ],
+    "power": "Power Scheme GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (Balanced)",
+    "cpu": [
+      {
+        "Name": "Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz",
+        "NumberOfCores": 6,
+        "NumberOfLogicalProcessors": 12
+      }
+    ],
+    "osVersion": "10.0.26200.0",
+    "ramBytes": 17085616128
+  },
+  "protocol": "cold intro; 20s native wheel reversals; 10 Hero-only navigation selections interrupted by native wheel; 3s idle. Not a Hero→About journey test.",
+  "frameEstimator": "RAF intervals; nominal cadence inferred by median; dropped estimate sums max(0,round(interval/median)-1). Not display presentation telemetry.",
+  "cpuGpuScope": "One RAF callback that issues all three Hero draws, plus paired EXT_disjoint_timer_query_webgl2 elapsed clear→third draw when available. Query instrumentation adds overhead. Cold upload excluded from ready-frame budget; long tasks retained.",
+  "runs": [
+    {
+      "tier": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "run": 1,
+      "frameSamples": 1438,
+      "medianFrameMs": 16.69999999999891,
+      "p95FrameMs": 16.799999999999272,
+      "estimatedDroppedPercent": 0,
+      "ownCallbackP95Ms": 0.20000000298023224,
+      "gpuTimerAvailable": true,
+      "gpuP95Ms": 0.062848,
+      "pairedCpuGpuP95Ms": 0.26102400298023226,
+      "lcpMs": 1844,
+      "cls": 0,
+      "eventDurationMaxMs": 40,
+      "longTasks": [
+        {
+          "start": 768.7000000029802,
+          "duration": 914
+        },
+        {
+          "start": 1901.7000000029802,
+          "duration": 52
+        }
+      ],
+      "initialJsGzipBytes": 223227,
+      "deferredJsGzipBytes": 137621,
+      "initialAssets": [
+        {
+          "url": "/_next/static/chunks/20pkwklkbp1q4.js",
+          "bytes": 183339,
+          "gzipBytes": 48503
+        },
+        {
+          "url": "/_next/static/chunks/1rj7ns8rte9vc.js",
+          "bytes": 229156,
+          "gzipBytes": 71628
+        },
+        {
+          "url": "/_next/static/chunks/turbopack-03h4qq07e4vwr.js",
+          "bytes": 9688,
+          "gzipBytes": 3838
+        },
+        {
+          "url": "/_next/static/chunks/3fntmmi971322.js",
+          "bytes": 14377,
+          "gzipBytes": 3661
+        },
+        {
+          "url": "/_next/static/chunks/3w4dvyhx7nv5s.js",
+          "bytes": 215,
+          "gzipBytes": 197
+        },
+        {
+          "url": "/_next/static/chunks/2sdqobh9jnftw.js",
+          "bytes": 127988,
+          "gzipBytes": 49910
+        },
+        {
+          "url": "/_next/static/chunks/0cz1d0mv5g_q7.js",
+          "bytes": 112594,
+          "gzipBytes": 39627
+        },
+        {
+          "url": "/_next/static/chunks/3l04zcqx63h3y.js",
+          "bytes": 16797,
+          "gzipBytes": 5863
+        }
+      ],
+      "deferred": [
+        {
+          "url": "/_next/static/chunks/1ss88elyp1qi5.js",
+          "bytes": 548425,
+          "gzipBytes": 137621
+        }
+      ],
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1650 (0x00001F91) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "canvas": {
+        "width": 640,
+        "height": 640
+      },
+      "root": {
+        "phase": "ready",
+        "webgl": "true",
+        "progress": "0",
+        "bound": "true",
+        "drawCalls": "3",
+        "points": "1200",
+        "handoffs": "1"
+      },
+      "visibility": "visible",
+      "errors": [],
+      "trace": {
+        "path": ".tools/review/hero/desktop-1.trace.json.gz",
+        "sha256": "eba6dae000a9c9556dd4b2f3f665000a0e8bdfc1df37b0c028022163f2ce79ec",
+        "uncompressedBytes": 26494273
+      },
+      "requests": [
+        "/",
+        "/_next/static/media/manrope_latin_400_normal-s.p.2xa18tgv2np2i.woff2",
+        "/_next/static/media/manrope_latin_600_normal-s.p.2ybi4mo9-3upl.woff2",
+        "/assets/portrait-hero-960.webp",
+        "/_next/static/chunks/21yqkx36z8zwi.css",
+        "/_next/static/chunks/3l04zcqx63h3y.js",
+        "/_next/static/chunks/20pkwklkbp1q4.js",
+        "/_next/static/chunks/1rj7ns8rte9vc.js",
+        "/_next/static/chunks/turbopack-03h4qq07e4vwr.js",
+        "/_next/static/chunks/3fntmmi971322.js",
+        "/_next/static/chunks/3w4dvyhx7nv5s.js",
+        "/_next/static/chunks/2sdqobh9jnftw.js",
+        "/_next/static/media/ibm_plex_mono_latin_400_normal-s.3xdfs0-p_zi4c.woff2",
+        "/_next/static/chunks/1ss88elyp1qi5.js",
+        "/assets/portrait-scene-960.webp",
+        "/favicon.svg"
+      ]
+    },
+    {
+      "tier": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "run": 2,
+      "frameSamples": 1436,
+      "medianFrameMs": 16.69999999999891,
+      "p95FrameMs": 16.799999999999272,
+      "estimatedDroppedPercent": 0,
+      "ownCallbackP95Ms": 0.20000000298023224,
+      "gpuTimerAvailable": true,
+      "gpuP95Ms": 0.059456,
+      "pairedCpuGpuP95Ms": 0.25939198807907105,
+      "lcpMs": 136,
+      "cls": 0,
+      "eventDurationMaxMs": 64,
+      "longTasks": [
+        {
+          "start": 34.5,
+          "duration": 70
+        },
+        {
+          "start": 114.09999999403954,
+          "duration": 55
+        }
+      ],
+      "initialJsGzipBytes": 223227,
+      "deferredJsGzipBytes": 137621,
+      "initialAssets": [
+        {
+          "url": "/_next/static/chunks/20pkwklkbp1q4.js",
+          "bytes": 183339,
+          "gzipBytes": 48503
+        },
+        {
+          "url": "/_next/static/chunks/1rj7ns8rte9vc.js",
+          "bytes": 229156,
+          "gzipBytes": 71628
+        },
+        {
+          "url": "/_next/static/chunks/turbopack-03h4qq07e4vwr.js",
+          "bytes": 9688,
+          "gzipBytes": 3838
+        },
+        {
+          "url": "/_next/static/chunks/3fntmmi971322.js",
+          "bytes": 14377,
+          "gzipBytes": 3661
+        },
+        {
+          "url": "/_next/static/chunks/3w4dvyhx7nv5s.js",
+          "bytes": 215,
+          "gzipBytes": 197
+        },
+        {
+          "url": "/_next/static/chunks/2sdqobh9jnftw.js",
+          "bytes": 127988,
+          "gzipBytes": 49910
+        },
+        {
+          "url": "/_next/static/chunks/0cz1d0mv5g_q7.js",
+          "bytes": 112594,
+          "gzipBytes": 39627
+        },
+        {
+          "url": "/_next/static/chunks/3l04zcqx63h3y.js",
+          "bytes": 16797,
+          "gzipBytes": 5863
+        }
+      ],
+      "deferred": [
+        {
+          "url": "/_next/static/chunks/1ss88elyp1qi5.js",
+          "bytes": 548425,
+          "gzipBytes": 137621
+        }
+      ],
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1650 (0x00001F91) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "canvas": {
+        "width": 640,
+        "height": 640
+      },
+      "root": {
+        "phase": "ready",
+        "webgl": "true",
+        "progress": "0",
+        "bound": "true",
+        "drawCalls": "3",
+        "points": "1200",
+        "handoffs": "1"
+      },
+      "visibility": "visible",
+      "errors": [],
+      "trace": {
+        "path": ".tools/review/hero/desktop-2.trace.json.gz",
+        "sha256": "bab9ae5b418afd0b7725acb19c526610ae6ccacc7b1250cc5e4b04d69063a48e",
+        "uncompressedBytes": 25318747
+      },
+      "requests": [
+        "/",
+        "/_next/static/media/manrope_latin_400_normal-s.p.2xa18tgv2np2i.woff2",
+        "/_next/static/media/manrope_latin_600_normal-s.p.2ybi4mo9-3upl.woff2",
+        "/assets/portrait-hero-960.webp",
+        "/_next/static/chunks/21yqkx36z8zwi.css",
+        "/_next/static/chunks/3l04zcqx63h3y.js",
+        "/_next/static/chunks/20pkwklkbp1q4.js",
+        "/_next/static/chunks/1rj7ns8rte9vc.js",
+        "/_next/static/chunks/turbopack-03h4qq07e4vwr.js",
+        "/_next/static/chunks/3fntmmi971322.js",
+        "/_next/static/chunks/3w4dvyhx7nv5s.js",
+        "/_next/static/chunks/2sdqobh9jnftw.js",
+        "/_next/static/media/ibm_plex_mono_latin_400_normal-s.3xdfs0-p_zi4c.woff2",
+        "/favicon.svg",
+        "/_next/static/chunks/1ss88elyp1qi5.js",
+        "/assets/portrait-scene-960.webp"
+      ]
+    },
+    {
+      "tier": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "run": 3,
+      "frameSamples": 1437,
+      "medianFrameMs": 16.69999999999891,
+      "p95FrameMs": 16.799999999999272,
+      "estimatedDroppedPercent": 0,
+      "ownCallbackP95Ms": 0.20000000298023224,
+      "gpuTimerAvailable": true,
+      "gpuP95Ms": 0.059392,
+      "pairedCpuGpuP95Ms": 0.25939200298023224,
+      "lcpMs": 92,
+      "cls": 0,
+      "eventDurationMaxMs": 64,
+      "longTasks": [],
+      "initialJsGzipBytes": 223227,
+      "deferredJsGzipBytes": 137621,
+      "initialAssets": [
+        {
+          "url": "/_next/static/chunks/20pkwklkbp1q4.js",
+          "bytes": 183339,
+          "gzipBytes": 48503
+        },
+        {
+          "url": "/_next/static/chunks/1rj7ns8rte9vc.js",
+          "bytes": 229156,
+          "gzipBytes": 71628
+        },
+        {
+          "url": "/_next/static/chunks/turbopack-03h4qq07e4vwr.js",
+          "bytes": 9688,
+          "gzipBytes": 3838
+        },
+        {
+          "url": "/_next/static/chunks/3fntmmi971322.js",
+          "bytes": 14377,
+          "gzipBytes": 3661
+        },
+        {
+          "url": "/_next/static/chunks/3w4dvyhx7nv5s.js",
+          "bytes": 215,
+          "gzipBytes": 197
+        },
+        {
+          "url": "/_next/static/chunks/2sdqobh9jnftw.js",
+          "bytes": 127988,
+          "gzipBytes": 49910
+        },
+        {
+          "url": "/_next/static/chunks/0cz1d0mv5g_q7.js",
+          "bytes": 112594,
+          "gzipBytes": 39627
+        },
+        {
+          "url": "/_next/static/chunks/3l04zcqx63h3y.js",
+          "bytes": 16797,
+          "gzipBytes": 5863
+        }
+      ],
+      "deferred": [
+        {
+          "url": "/_next/static/chunks/1ss88elyp1qi5.js",
+          "bytes": 548425,
+          "gzipBytes": 137621
+        }
+      ],
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1650 (0x00001F91) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "canvas": {
+        "width": 640,
+        "height": 640
+      },
+      "root": {
+        "phase": "ready",
+        "webgl": "true",
+        "progress": "0",
+        "bound": "true",
+        "drawCalls": "3",
+        "points": "1200",
+        "handoffs": "1"
+      },
+      "visibility": "visible",
+      "errors": [],
+      "trace": {
+        "path": ".tools/review/hero/desktop-3.trace.json.gz",
+        "sha256": "0705244142ab9e77a9a2e2e12b97fb7124d16f53f244d5dace85a34527bacfcd",
+        "uncompressedBytes": 25301659
+      },
+      "requests": [
+        "/",
+        "/_next/static/media/manrope_latin_400_normal-s.p.2xa18tgv2np2i.woff2",
+        "/_next/static/media/manrope_latin_600_normal-s.p.2ybi4mo9-3upl.woff2",
+        "/assets/portrait-hero-960.webp",
+        "/_next/static/chunks/21yqkx36z8zwi.css",
+        "/_next/static/chunks/3l04zcqx63h3y.js",
+        "/_next/static/chunks/20pkwklkbp1q4.js",
+        "/_next/static/chunks/1rj7ns8rte9vc.js",
+        "/_next/static/chunks/turbopack-03h4qq07e4vwr.js",
+        "/_next/static/chunks/3fntmmi971322.js",
+        "/_next/static/chunks/3w4dvyhx7nv5s.js",
+        "/_next/static/chunks/2sdqobh9jnftw.js",
+        "/_next/static/media/ibm_plex_mono_latin_400_normal-s.3xdfs0-p_zi4c.woff2",
+        "/favicon.svg",
+        "/_next/static/chunks/1ss88elyp1qi5.js",
+        "/assets/portrait-scene-960.webp"
+      ]
+    },
+    {
+      "tier": {
+        "name": "mobile-emulation",
+        "width": 390,
+        "height": 844,
+        "dpr": 3
+      },
+      "run": 1,
+      "frameSamples": 1452,
+      "medianFrameMs": 16.69999999999891,
+      "p95FrameMs": 16.799999999999272,
+      "estimatedDroppedPercent": 0.06882312456985547,
+      "ownCallbackP95Ms": 0.20000000298023224,
+      "gpuTimerAvailable": true,
+      "gpuP95Ms": 0.048512,
+      "pairedCpuGpuP95Ms": 0.24835200298023224,
+      "lcpMs": 88,
+      "cls": 0,
+      "eventDurationMaxMs": 48,
+      "longTasks": [
+        {
+          "start": 200.5,
+          "duration": 60
+        }
+      ],
+      "initialJsGzipBytes": 223227,
+      "deferredJsGzipBytes": 137621,
+      "initialAssets": [
+        {
+          "url": "/_next/static/chunks/20pkwklkbp1q4.js",
+          "bytes": 183339,
+          "gzipBytes": 48503
+        },
+        {
+          "url": "/_next/static/chunks/1rj7ns8rte9vc.js",
+          "bytes": 229156,
+          "gzipBytes": 71628
+        },
+        {
+          "url": "/_next/static/chunks/turbopack-03h4qq07e4vwr.js",
+          "bytes": 9688,
+          "gzipBytes": 3838
+        },
+        {
+          "url": "/_next/static/chunks/3fntmmi971322.js",
+          "bytes": 14377,
+          "gzipBytes": 3661
+        },
+        {
+          "url": "/_next/static/chunks/3w4dvyhx7nv5s.js",
+          "bytes": 215,
+          "gzipBytes": 197
+        },
+        {
+          "url": "/_next/static/chunks/2sdqobh9jnftw.js",
+          "bytes": 127988,
+          "gzipBytes": 49910
+        },
+        {
+          "url": "/_next/static/chunks/0cz1d0mv5g_q7.js",
+          "bytes": 112594,
+          "gzipBytes": 39627
+        },
+        {
+          "url": "/_next/static/chunks/3l04zcqx63h3y.js",
+          "bytes": 16797,
+          "gzipBytes": 5863
+        }
+      ],
+      "deferred": [
+        {
+          "url": "/_next/static/chunks/1ss88elyp1qi5.js",
+          "bytes": 548425,
+          "gzipBytes": 137621
+        }
+      ],
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1650 (0x00001F91) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "canvas": {
+        "width": 427,
+        "height": 427
+      },
+      "root": {
+        "phase": "ready",
+        "webgl": "true",
+        "progress": "1",
+        "bound": "true",
+        "drawCalls": "3",
+        "points": "450",
+        "handoffs": "1"
+      },
+      "visibility": "visible",
+      "errors": [],
+      "trace": {
+        "path": ".tools/review/hero/mobile-emulation-1.trace.json.gz",
+        "sha256": "fa31d7268eddece6a91f71311a743a3c1aad427847a7c3605c48e8271fb105e4",
+        "uncompressedBytes": 27201799
+      },
+      "requests": [
+        "/",
+        "/_next/static/media/manrope_latin_400_normal-s.p.2xa18tgv2np2i.woff2",
+        "/_next/static/media/manrope_latin_600_normal-s.p.2ybi4mo9-3upl.woff2",
+        "/assets/portrait-hero-1280.webp",
+        "/_next/static/chunks/21yqkx36z8zwi.css",
+        "/_next/static/chunks/3l04zcqx63h3y.js",
+        "/_next/static/chunks/20pkwklkbp1q4.js",
+        "/_next/static/chunks/1rj7ns8rte9vc.js",
+        "/_next/static/chunks/turbopack-03h4qq07e4vwr.js",
+        "/_next/static/chunks/3fntmmi971322.js",
+        "/_next/static/chunks/3w4dvyhx7nv5s.js",
+        "/_next/static/chunks/2sdqobh9jnftw.js",
+        "/_next/static/media/ibm_plex_mono_latin_400_normal-s.3xdfs0-p_zi4c.woff2",
+        "/favicon.svg",
+        "/_next/static/chunks/1ss88elyp1qi5.js",
+        "/assets/portrait-scene-960.webp"
+      ]
+    },
+    {
+      "tier": {
+        "name": "mobile-emulation",
+        "width": 390,
+        "height": 844,
+        "dpr": 3
+      },
+      "run": 2,
+      "frameSamples": 1452,
+      "medianFrameMs": 16.69999999999891,
+      "p95FrameMs": 16.799999999999272,
+      "estimatedDroppedPercent": 0,
+      "ownCallbackP95Ms": 0.20000000298023224,
+      "gpuTimerAvailable": true,
+      "gpuP95Ms": 0.049024,
+      "pairedCpuGpuP95Ms": 0.24819200298023225,
+      "lcpMs": 140,
+      "cls": 0,
+      "eventDurationMaxMs": 48,
+      "longTasks": [
+        {
+          "start": 213.90000000596046,
+          "duration": 57
+        }
+      ],
+      "initialJsGzipBytes": 223227,
+      "deferredJsGzipBytes": 137621,
+      "initialAssets": [
+        {
+          "url": "/_next/static/chunks/20pkwklkbp1q4.js",
+          "bytes": 183339,
+          "gzipBytes": 48503
+        },
+        {
+          "url": "/_next/static/chunks/1rj7ns8rte9vc.js",
+          "bytes": 229156,
+          "gzipBytes": 71628
+        },
+        {
+          "url": "/_next/static/chunks/turbopack-03h4qq07e4vwr.js",
+          "bytes": 9688,
+          "gzipBytes": 3838
+        },
+        {
+          "url": "/_next/static/chunks/3fntmmi971322.js",
+          "bytes": 14377,
+          "gzipBytes": 3661
+        },
+        {
+          "url": "/_next/static/chunks/3w4dvyhx7nv5s.js",
+          "bytes": 215,
+          "gzipBytes": 197
+        },
+        {
+          "url": "/_next/static/chunks/2sdqobh9jnftw.js",
+          "bytes": 127988,
+          "gzipBytes": 49910
+        },
+        {
+          "url": "/_next/static/chunks/0cz1d0mv5g_q7.js",
+          "bytes": 112594,
+          "gzipBytes": 39627
+        },
+        {
+          "url": "/_next/static/chunks/3l04zcqx63h3y.js",
+          "bytes": 16797,
+          "gzipBytes": 5863
+        }
+      ],
+      "deferred": [
+        {
+          "url": "/_next/static/chunks/1ss88elyp1qi5.js",
+          "bytes": 548425,
+          "gzipBytes": 137621
+        }
+      ],
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1650 (0x00001F91) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "canvas": {
+        "width": 427,
+        "height": 427
+      },
+      "root": {
+        "phase": "ready",
+        "webgl": "true",
+        "progress": "1",
+        "bound": "true",
+        "drawCalls": "3",
+        "points": "450",
+        "handoffs": "1"
+      },
+      "visibility": "visible",
+      "errors": [],
+      "trace": {
+        "path": ".tools/review/hero/mobile-emulation-2.trace.json.gz",
+        "sha256": "cac6e1feb94007b8f0dd631bf2ecf774a3a2539a5901db9bdba68d0af043233f",
+        "uncompressedBytes": 27205784
+      },
+      "requests": [
+        "/",
+        "/_next/static/media/manrope_latin_400_normal-s.p.2xa18tgv2np2i.woff2",
+        "/_next/static/media/manrope_latin_600_normal-s.p.2ybi4mo9-3upl.woff2",
+        "/assets/portrait-hero-1280.webp",
+        "/_next/static/chunks/21yqkx36z8zwi.css",
+        "/_next/static/chunks/3l04zcqx63h3y.js",
+        "/_next/static/chunks/20pkwklkbp1q4.js",
+        "/_next/static/chunks/1rj7ns8rte9vc.js",
+        "/_next/static/chunks/turbopack-03h4qq07e4vwr.js",
+        "/_next/static/chunks/3fntmmi971322.js",
+        "/_next/static/chunks/3w4dvyhx7nv5s.js",
+        "/_next/static/chunks/2sdqobh9jnftw.js",
+        "/_next/static/media/ibm_plex_mono_latin_400_normal-s.3xdfs0-p_zi4c.woff2",
+        "/favicon.svg",
+        "/_next/static/chunks/1ss88elyp1qi5.js",
+        "/assets/portrait-scene-960.webp"
+      ]
+    },
+    {
+      "tier": {
+        "name": "mobile-emulation",
+        "width": 390,
+        "height": 844,
+        "dpr": 3
+      },
+      "run": 3,
+      "frameSamples": 1451,
+      "medianFrameMs": 16.69999999999891,
+      "p95FrameMs": 16.799999999999272,
+      "estimatedDroppedPercent": 0,
+      "ownCallbackP95Ms": 0.20000000298023224,
+      "gpuTimerAvailable": true,
+      "gpuP95Ms": 0.048992,
+      "pairedCpuGpuP95Ms": 0.24832000298023224,
+      "lcpMs": 88,
+      "cls": 0,
+      "eventDurationMaxMs": 48,
+      "longTasks": [
+        {
+          "start": 201.90000000596046,
+          "duration": 59
+        }
+      ],
+      "initialJsGzipBytes": 223227,
+      "deferredJsGzipBytes": 137621,
+      "initialAssets": [
+        {
+          "url": "/_next/static/chunks/20pkwklkbp1q4.js",
+          "bytes": 183339,
+          "gzipBytes": 48503
+        },
+        {
+          "url": "/_next/static/chunks/1rj7ns8rte9vc.js",
+          "bytes": 229156,
+          "gzipBytes": 71628
+        },
+        {
+          "url": "/_next/static/chunks/turbopack-03h4qq07e4vwr.js",
+          "bytes": 9688,
+          "gzipBytes": 3838
+        },
+        {
+          "url": "/_next/static/chunks/3fntmmi971322.js",
+          "bytes": 14377,
+          "gzipBytes": 3661
+        },
+        {
+          "url": "/_next/static/chunks/3w4dvyhx7nv5s.js",
+          "bytes": 215,
+          "gzipBytes": 197
+        },
+        {
+          "url": "/_next/static/chunks/2sdqobh9jnftw.js",
+          "bytes": 127988,
+          "gzipBytes": 49910
+        },
+        {
+          "url": "/_next/static/chunks/0cz1d0mv5g_q7.js",
+          "bytes": 112594,
+          "gzipBytes": 39627
+        },
+        {
+          "url": "/_next/static/chunks/3l04zcqx63h3y.js",
+          "bytes": 16797,
+          "gzipBytes": 5863
+        }
+      ],
+      "deferred": [
+        {
+          "url": "/_next/static/chunks/1ss88elyp1qi5.js",
+          "bytes": 548425,
+          "gzipBytes": 137621
+        }
+      ],
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1650 (0x00001F91) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "canvas": {
+        "width": 427,
+        "height": 427
+      },
+      "root": {
+        "phase": "ready",
+        "webgl": "true",
+        "progress": "1",
+        "bound": "true",
+        "drawCalls": "3",
+        "points": "450",
+        "handoffs": "1"
+      },
+      "visibility": "visible",
+      "errors": [],
+      "trace": {
+        "path": ".tools/review/hero/mobile-emulation-3.trace.json.gz",
+        "sha256": "4a62fa48072444579c3beabac981e7342725062e3acfeec4924d76cc18b4d05e",
+        "uncompressedBytes": 27074417
+      },
+      "requests": [
+        "/",
+        "/_next/static/media/manrope_latin_400_normal-s.p.2xa18tgv2np2i.woff2",
+        "/_next/static/media/manrope_latin_600_normal-s.p.2ybi4mo9-3upl.woff2",
+        "/assets/portrait-hero-1280.webp",
+        "/_next/static/chunks/21yqkx36z8zwi.css",
+        "/_next/static/chunks/3l04zcqx63h3y.js",
+        "/_next/static/chunks/20pkwklkbp1q4.js",
+        "/_next/static/chunks/1rj7ns8rte9vc.js",
+        "/_next/static/chunks/turbopack-03h4qq07e4vwr.js",
+        "/_next/static/chunks/3fntmmi971322.js",
+        "/_next/static/chunks/3w4dvyhx7nv5s.js",
+        "/_next/static/chunks/2sdqobh9jnftw.js",
+        "/_next/static/media/ibm_plex_mono_latin_400_normal-s.3xdfs0-p_zi4c.woff2",
+        "/favicon.svg",
+        "/_next/static/chunks/1ss88elyp1qi5.js",
+        "/assets/portrait-scene-960.webp"
+      ]
+    }
+  ]
+}

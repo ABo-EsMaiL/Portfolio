@@ -1,0 +1,22 @@
+[
+  {
+    "name": "opencv",
+    "source": "Owner-supplied visual reference",
+    "sourceFilename": "image_a7c70e.png",
+    "sourceSha256": "b84c92793cb72378778939eca0cc64753df7ca8a2de17551c97567bf991951e5",
+    "file": "public/assets/skills/opencv-reference.png",
+    "sha256": "91b1f03e76fc4b2bac0c472f024e61fba295ef1cb2f2bf7ccdfbd2ee3caed8bf",
+    "modification": "Near-white paper background made transparent, trimmed; colored artwork unchanged",
+    "publicationRights": "Unknown original author/license. Owner requested use in local review; publication clearance remains open."
+  },
+  {
+    "name": "vision",
+    "source": "Owner-supplied visual reference",
+    "sourceFilename": "image_4b33eb.png",
+    "sourceSha256": "6d1a2c62fdff32dd52716ac534903c5db591a5419a9c7d064186f5bef442d321",
+    "file": "public/assets/skills/vision-reference.png",
+    "sha256": "3ff18428f7ff0b50974f698560f4b9b0939d6c52b721fec678127ce925bdd7b6",
+    "modification": "Near-white paper background made transparent, trimmed; colored artwork unchanged",
+    "publicationRights": "Unknown original author/license. Owner requested use in local review; publication clearance remains open."
+  }
+]

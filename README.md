@@ -4,7 +4,7 @@ A custom, camera-led portfolio: one persistent world, reversible transformations
 
 ## Current status
 
-Milestone 1 is explicitly approved and merged into main at `e22ea4a` (local tag `milestone-1`). Milestone 2 is authorized on `feature/hero-section`; the minimal shell is runnable, and portrait/Hero implementation is in progress. No Hero merge or Milestone 3 implementation is authorized yet.
+Milestone 1 is explicitly approved and merged into main at `e22ea4a` (local tag `milestone-1`). Both dark Milestone 2 aesthetics were rejected; the latest twilight/latent-space Hero is running on `feature/hero-section`. See [current art-direction review](docs/hero-twilight-review.md); the [prior cinematic revision](docs/hero-art-direction-review.md) and [previous technical review](docs/hero-milestone-review.md) are historical. Trace/CDP investigation is paused by owner direction. No Hero merge or Milestone 3 implementation is authorized yet.
 
 - Stack: Next.js App Router + TypeScript + Tailwind CSS; GSAP + ScrollTrigger.
 - Detection: visual illusion, not client-side machine learning inference.

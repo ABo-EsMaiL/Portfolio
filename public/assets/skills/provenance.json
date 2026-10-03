@@ -1,0 +1,266 @@
+[
+  {
+    "name": "python",
+    "source": "https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/files/python-logo-only.svg",
+    "metadata": {
+      "title": "Python",
+      "hex": "3776AB",
+      "source": "https://www.python.org/community/logos/",
+      "guidelines": "https://www.python.org/community/logos/"
+    },
+    "modification": "none",
+    "sourceSha256": "baec8662a1461c2cacc326b54d2727cb2f1ce07ba02d00f5b826d035104f649f",
+    "bytes": 9605,
+    "sha256": "baec8662a1461c2cacc326b54d2727cb2f1ce07ba02d00f5b826d035104f649f"
+  },
+  {
+    "name": "javascript",
+    "source": "https://raw.githubusercontent.com/voodootikigod/logo.js/1544bdeed6d618a6cfe4f0650d04ab8d9cfa76d9/js.svg",
+    "metadata": {
+      "title": "JavaScript",
+      "hex": "F7DF1E",
+      "source": "https://github.com/voodootikigod/logo.js/blob/1544bdeed6d618a6cfe4f0650d04ab8d9cfa76d9/js.svg",
+      "license": {
+        "type": "MIT"
+      }
+    },
+    "modification": "none",
+    "sourceSha256": "a70a3d8d36ea6b0e614a04ec30d5a4fb2bf36d515492cb84050ded2b84d14393",
+    "bytes": 2325,
+    "sha256": "a70a3d8d36ea6b0e614a04ec30d5a4fb2bf36d515492cb84050ded2b84d14393"
+  },
+  {
+    "name": "tensorflow",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/tensorflow.svg",
+    "metadata": {
+      "title": "TensorFlow",
+      "hex": "FF6F00",
+      "source": "https://www.tensorflow.org"
+    },
+    "modification": "Fill set to upstream Simple Icons brand hex; paths unchanged",
+    "sourceSha256": "4c828afb17cd35786d7dd336f78d3111a7c730af54011cc2b20988866bdd8665",
+    "bytes": 300,
+    "sha256": "9e57fe2766e52bcaea9d10dc7997ddaed61dabe21f5bfaccdd61b064bfd781be"
+  },
+  {
+    "name": "pytorch",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/pytorch.svg",
+    "metadata": {
+      "title": "PyTorch",
+      "hex": "EE4C2C",
+      "source": "https://github.com/pytorch/pytorch.github.io/blob/8f083bd12192ca12d5e1c1f3d236f4831d823d8f/assets/images/logo.svg",
+      "guidelines": "https://github.com/pytorch/pytorch.github.io/blob/381117ec296f002b2de475402ef29cca6c55e209/assets/brand-guidelines/PyTorch-Brand-Guidelines.pdf"
+    },
+    "modification": "Fill set to upstream Simple Icons brand hex; paths unchanged",
+    "sourceSha256": "4dd3f3d3e4102f3bee391fcb3d8ac960a14c48e6655d43b23f7b386d5da36d01",
+    "bytes": 466,
+    "sha256": "aaa16ace4553ae5eece75d9e2e0b4cb7fce1f340424631db5f9cd08fe6fa6ed2"
+  },
+  {
+    "name": "keras",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/keras.svg",
+    "metadata": {
+      "title": "Keras",
+      "hex": "D00000",
+      "source": "https://keras.io"
+    },
+    "modification": "Fill set to upstream Simple Icons brand hex; paths unchanged",
+    "sourceSha256": "76eb6f2c567ec9e122ba93b3e1a6c378868c9d93814878b2841af21493d7a2bc",
+    "bytes": 271,
+    "sha256": "5d128226db00d423506b56816041dc7bbfa5f2e276151e4c832f58a316ba8d94"
+  },
+  {
+    "name": "opencv",
+    "source": "https://api.github.com/repos/opencv/opencv/git/blobs/4d93ce65a22ffcbb3713e95ec32e2ee4cf554165",
+    "metadata": {
+      "title": "OpenCV",
+      "hex": "5C3EE8",
+      "source": "https://opencv.org/resources/media-kit/",
+      "guidelines": "https://opencv.org/resources/media-kit/"
+    },
+    "modification": "none",
+    "sourceSha256": "e2e47ee3b6be042a79ad6edfdc491bc9020b350a2e965e0d9dfdfb5f5c4756a2",
+    "bytes": 1782,
+    "sha256": "e2e47ee3b6be042a79ad6edfdc491bc9020b350a2e965e0d9dfdfb5f5c4756a2"
+  },
+  {
+    "name": "langchain",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/langchain.svg",
+    "metadata": {
+      "title": "LangChain",
+      "hex": "7FC8FF",
+      "source": "https://www.langchain.com/langchain"
+    },
+    "modification": "Fill set to upstream Simple Icons brand hex; paths unchanged",
+    "sourceSha256": "7886444fa437debc26c8e9a51fd86943ad2cbc24b0f8185f15421190f48ab362",
+    "bytes": 542,
+    "sha256": "3ab96dbbc1a0ea806834eab1f9d144819bdd9fb880cd91dffb6f1b6df0a54a16"
+  },
+  {
+    "name": "langgraph",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/langgraph.svg",
+    "metadata": {
+      "title": "LangGraph",
+      "hex": "7FC8FF",
+      "source": "https://www.langchain.com/langgraph"
+    },
+    "modification": "Fill set to upstream Simple Icons brand hex; paths unchanged",
+    "sourceSha256": "c0085e105dba047ea61881ebcf6d7f80665c691af5411a7cb48cf719038b8b0e",
+    "bytes": 217,
+    "sha256": "8fbb156b4bbb146af931da19770cb36ad6c217f71a7594903588c9a373b54123"
+  },
+  {
+    "name": "pandas",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/pandas.svg",
+    "metadata": {
+      "title": "pandas",
+      "hex": "150458",
+      "source": "https://pandas.pydata.org/about/citing.html",
+      "guidelines": "https://pandas.pydata.org/about/citing.html"
+    },
+    "modification": "Fill set to upstream Simple Icons brand hex; paths unchanged",
+    "sourceSha256": "0246b1e34e3760b719bac711184671df5a2cb7a332d3091d49c2a383a2b72b2e",
+    "bytes": 354,
+    "sha256": "7ff6ac657802511b4f2134ff37ff4c4fb8fca6bf3a9ffee1fb19e9469525913f"
+  },
+  {
+    "name": "numpy",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/numpy.svg",
+    "metadata": {
+      "title": "NumPy",
+      "hex": "013243",
+      "source": "https://numpy.org/press-kit/",
+      "guidelines": "https://github.com/numpy/numpy/blob/main/branding/logo/logoguidelines.md"
+    },
+    "modification": "Fill set to upstream Simple Icons brand hex; paths unchanged",
+    "sourceSha256": "ddbd7d92ab879ceba54f5428f49a703ba8d05d54b93808b7178f5e0afc8373a3",
+    "bytes": 790,
+    "sha256": "1c2fcdec4b291799c3bae475e6aaff2fa694df88c5ae7181e3b62c72d51e9610"
+  },
+  {
+    "name": "scikitlearn",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/scikitlearn.svg",
+    "metadata": {
+      "title": "scikit-learn",
+      "hex": "F7931E",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/c5ef2e985c13119001aa697e446ebb3dbcb326e5/doc/logos/scikit-learn-logo.svg"
+    },
+    "modification": "Fill set to upstream Simple Icons brand hex; paths unchanged",
+    "sourceSha256": "ebaf97475ff5e6af3d6a4799a164a3a385e902e442d012cc19c47237cecb2be8",
+    "bytes": 4955,
+    "sha256": "422acd1156f9cf98d6f31dd5d743aa02f452a3f0e092309bdda36d468575fc53"
+  },
+  {
+    "name": "fastapi",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/fastapi.svg",
+    "metadata": {
+      "title": "FastAPI",
+      "hex": "009688",
+      "source": "https://github.com/tiangolo/fastapi/blob/ffb4f77a11f83132b521ba0aac6c95792c19e797/docs/en/docs/img/icon-white.svg"
+    },
+    "modification": "Fill set to upstream Simple Icons brand hex; paths unchanged",
+    "sourceSha256": "af0bdd5fd3f16a49e341089049418af7b02a04eefdc088b2e26c4524fa8b75d1",
+    "bytes": 362,
+    "sha256": "faca76e57b2cb4164d3a51d680ce014fd925c7c96a993f2fafa109386758cad3"
+  },
+  {
+    "name": "docker",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/docker.svg",
+    "metadata": {
+      "title": "Docker",
+      "hex": "2496ED",
+      "source": "https://www.docker.com/company/newsroom/media-resources"
+    },
+    "modification": "Fill set to upstream Simple Icons brand hex; paths unchanged",
+    "sourceSha256": "65571291c261ef869c31540a38f3ca0f0ee3bb73f179c172211c8860f19a6359",
+    "bytes": 1780,
+    "sha256": "ba1fb157870b2ec02e054aed42154ac7418e25af91ec321fd328d17cad4023cd"
+  },
+  {
+    "name": "pydantic",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/pydantic.svg",
+    "metadata": {
+      "title": "Pydantic",
+      "hex": "E92063",
+      "source": "https://github.com/pydantic/pydantic/blob/94c748001a32992a587694b999fb1f3d2f1fc1fe/docs/logo-white.svg"
+    },
+    "modification": "Fill set to upstream Simple Icons brand hex; paths unchanged",
+    "sourceSha256": "68cfc07f02413da0c03bb7f768e38dc5cf385b0b0a830909b5cb7507ad6f0c84",
+    "bytes": 690,
+    "sha256": "668d741ae5dae3599c03374d85a22176040fe225b249579afa1ea578c7215771"
+  },
+  {
+    "name": "git",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/git.svg",
+    "metadata": {
+      "title": "Git",
+      "hex": "F03C2E",
+      "source": "https://git-scm.com/community/logos",
+      "license": {
+        "type": "CC-BY-3.0"
+      }
+    },
+    "modification": "Fill set to upstream Simple Icons brand hex; paths unchanged",
+    "sourceSha256": "95724d436215d483de82288610c3c144854138f49945424697fcdf8be66e17d6",
+    "bytes": 441,
+    "sha256": "ae0cc33bc3fc7c29c500c90a029e32f21fdb9297e0b3d59948da27b2607e8a2c"
+  },
+  {
+    "name": "chromadb",
+    "source": "https://api.github.com/repos/chroma-core/chroma/git/blobs/2778e795e1ee07db88610de3f7f9ade8abf8b38a",
+    "metadata": null,
+    "modification": "none",
+    "sourceSha256": "dcbd0b1c44052cf5caaa3db9182bd7e8e70afeb7f82709b329371f4beff99cf6",
+    "bytes": 945,
+    "sha256": "dcbd0b1c44052cf5caaa3db9182bd7e8e70afeb7f82709b329371f4beff99cf6"
+  },
+  {
+    "name": "pinecone",
+    "source": "https://www.pinecone.io/",
+    "metadata": null,
+    "modification": "Icon-only path extracted from official homepage wordmark; brand accent fill #002BFF",
+    "sourceSha256": "9b05bb6b05b879df3b30814eb7a6cfbc8ee9124451877d2c5a43771eda4e5ced",
+    "bytes": 1392,
+    "sha256": "9b05bb6b05b879df3b30814eb7a6cfbc8ee9124451877d2c5a43771eda4e5ced"
+  },
+  {
+    "name": "ollama",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/ollama.svg",
+    "metadata": {
+      "title": "Ollama",
+      "hex": "000000",
+      "source": "https://github.com/ollama/ollama/issues/2152#issuecomment-1905286922"
+    },
+    "modification": "Fill set to upstream Simple Icons brand hex; paths unchanged",
+    "sourceSha256": "9c62bf0159ee96c8b58c86a732f33b002b4b3bb165ec86e8ecca51ad6a82dab6",
+    "bytes": 4784,
+    "sha256": "8d113044ac7b6a4bea46c335f8410a04976c2e6ae5beaf9fc6b823d90f8b05a0"
+  },
+  {
+    "name": "n8n",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/n8n.svg",
+    "metadata": {
+      "title": "n8n",
+      "hex": "EA4B71",
+      "source": "https://n8n.io/press"
+    },
+    "modification": "Fill set to upstream Simple Icons brand hex; paths unchanged",
+    "sourceSha256": "f5a606188c78bf134fe7d85ae3d1310f6f4b7beafcd1d2fbdef2af02c92240a8",
+    "bytes": 1588,
+    "sha256": "2a415d5d2dea1903450d0df1b2b76866948d12a704e13378e54ed6896830c2e9"
+  },
+  {
+    "name": "postgresql",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/postgresql.svg",
+    "metadata": {
+      "title": "PostgreSQL",
+      "hex": "4169E1",
+      "source": "https://wiki.postgresql.org/wiki/Logo",
+      "guidelines": "https://www.postgresql.org/about/policies/trademarks/"
+    },
+    "modification": "Fill set to upstream Simple Icons brand hex; paths unchanged",
+    "sourceSha256": "c8ccadbd88c9312c2ad3734c4861b31d3485ce179ee91d64793143f83cfa745c",
+    "bytes": 5220,
+    "sha256": "bc45b1c56d0b1501dea387dbec4fda450d2ebc35244a620791815509d8c41dba"
+  }
+]

@@ -1,0 +1,59 @@
+{
+  "headingLines":[{"en":"Your ideas"},{"en":"Built with AI"}],
+  "heroName":{"en":"Ahmed AbdElHady Esmail"},
+  "pitchTitle":{"en":"Your next idea, built with AI"},
+  "pitchBody":{"en":"I turn ideas into working AI, from computer vision and local agents to the APIs that connect them."},
+  "focusTags": [
+    {"en": "Computer Vision"},
+    {"en": "Stateful Agents"},
+    {"en": "Neural Architecture"},
+    {"en": "MLOps"}
+  ],
+  "skillDomains": [
+    {"color":"#628FB2","skills":[
+      {"label":{"en":"Python"},"icon":"python","color":"#3776AB"},
+      {"label":{"en":"JavaScript"},"icon":"javascript","color":"#F7DF1E"},
+      {"label":{"en":"SQL"},"icon":"database","color":"#4169E1"}
+    ]},
+    {"color":"#AD8095","skills":[
+      {"label":{"en":"Deep Learning"},"icon":"network","color":"#B34879"},
+      {"label":{"en":"Computer Vision"},"icon":"vision","color":"#BA5932"},
+      {"label":{"en":"NLP"},"icon":"text","color":"#286BA6"},
+      {"label":{"en":"Generative AI"},"icon":"network","color":"#8351AC"},
+      {"label":{"en":"RAG"},"icon":"database","color":"#366D8D"},
+      {"label":{"en":"AI Agents"},"icon":"network","color":"#916218"},
+      {"label":{"en":"Prompt Engineering"},"icon":"text","color":"#9C4279"},
+      {"label":{"en":"TensorFlow"},"icon":"tensorflow","color":"#FF6F00"},
+      {"label":{"en":"PyTorch"},"icon":"pytorch","color":"#EE4C2C"},
+      {"label":{"en":"Keras"},"icon":"keras","color":"#D00000"},
+      {"label":{"en":"OpenCV"},"icon":"opencv","color":"#5C3EE8"},
+      {"label":{"en":"LangChain"},"icon":"langchain","color":"#7FC8FF"},
+      {"label":{"en":"LangGraph"},"icon":"langgraph","color":"#7FC8FF"},
+      {"label":{"en":"Pandas"},"icon":"pandas","color":"#150458"},
+      {"label":{"en":"NumPy"},"icon":"numpy","color":"#013243"},
+      {"label":{"en":"Scikit-Learn"},"icon":"scikitlearn","color":"#F7931E"}
+    ]},
+    {"color":"#6B9E8B","skills":[
+      {"label":{"en":"MLOps"},"icon":"pipeline","color":"#366F78"},
+      {"label":{"en":"Model Optimization"},"icon":"pipeline","color":"#AF6228"},
+      {"label":{"en":"FastAPI"},"icon":"fastapi","color":"#009688"},
+      {"label":{"en":"Docker"},"icon":"docker","color":"#2496ED"},
+      {"label":{"en":"Pydantic"},"icon":"pydantic","color":"#E92063"},
+      {"label":{"en":"RESTful APIs"},"icon":"pipeline","color":"#326C99"},
+      {"label":{"en":"Git"},"icon":"git","color":"#F03C2E"},
+      {"label":{"en":"PGVector"},"icon":"database","color":"#4169E1"},
+      {"label":{"en":"ChromaDB"},"icon":"chromadb","color":"#FFBC00"},
+      {"label":{"en":"Pinecone"},"icon":"pinecone","color":"#002BFF"},
+      {"label":{"en":"Ollama"},"icon":"ollama","color":"#000000"},
+      {"label":{"en":"n8n"},"icon":"n8n","color":"#EA4B71"},
+      {"label":{"en":"PostgreSQL"},"icon":"postgresql","color":"#4169E1"}
+    ]}
+  ],
+  "detectionSteps": [
+    {"en": "Scanning..."},
+    {"en": "Analyzing features..."},
+    {"en": "Matching..."},
+    {"en": "Identity unresolved"}
+  ],
+  "stage": {"en": "Identity"}
+}
